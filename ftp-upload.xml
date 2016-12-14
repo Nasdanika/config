@@ -27,7 +27,7 @@
             </fileset>
           </ftp>
 
-	  <ftp passive="yes" server="${ftp.server}" userid="${ftp.user}" password="${ftp.password}">
+	  <ftp passive="yes" server="${ftp.server}" userid="${ftp.user}" password="${ftp.password}" remotedir="/config">
 	    <fileset dir="${circle.artifacts}"/>
 	  </ftp>    
   </target>
