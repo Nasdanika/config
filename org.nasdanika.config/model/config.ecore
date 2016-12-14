@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="config" nsURI="urn:org.nasdanika.config" nsPrefix="org.nasdanika.config">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="documentation" value="Code generation model."/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Configuration">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Container of configuration items - properties and services.&#xD;&#xA;Generators extend configuration. Configuration can also be defined in a standalone model to be provided as input to generators.&#xD;&#xA;"/>
+    </eAnnotations>
+    <eOperations name="createContext" eType="#//Context" eExceptions="#//Exception">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates ``org.nasdanika.config.Context`` which provides access to properties and services."/>
+      </eAnnotations>
+      <eParameters name="parent" eType="#//Context">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Parent context."/>
+        </eAnnotations>
+      </eParameters>
+      <eParameters name="monitor" eType="#//SubMonitor"/>
+    </eOperations>
+    <eOperations name="validate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Validates element for execution/generation. Adds messages to diagnostics and "/>
+      </eAnnotations>
+      <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Diagnostics to add validation messages to."/>
+        </eAnnotations>
+      </eParameters>
+      <eParameters name="context">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Validation context."/>
+        </eAnnotations>
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
+          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="getConfigWorkSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="includes" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="URL's of configuration files to load into the this configurable's context.&#xD;&#xA;URL's are resolved relative to the ``baseURL``, which in turn is resolved relative to the model resource. &#xD;&#xA;&#xD;&#xA;The following custom schemes supported:&#xD;&#xA;&#xD;&#xA;* ``bundle`` - ``bundle:&lt;bundle symbolic name>/&lt;resource path in the bundle>``&#xD;&#xA;* ``java`` - ``java:&lt;classloader path>``&#xD;&#xA;&#xD;&#xA;Configuration files can be in the following formats:&#xD;&#xA;&#xD;&#xA;* XMI model - ``.xml`` or ``.nsdgen`` extension.&#xD;&#xA;* Properties file - ``.properties`` extension.&#xD;&#xA;* JSON file following the structure of the configuration model - ``.json`` extension.&#xD;&#xA;* YAML file following the structure of the configuration model - ``.yml`` extension.&#xD;&#xA;&#xD;&#xA;If XML/JSON/YAML contains configuration definition, then its ``createContext()`` method is invoked in sequence&#xD;&#xA;to create a chain of contexts. If property or service is contained in the definition, it gets mounted to a context created by this configuration."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" upperBound="-1"
+        eType="#//ConfigurationItem" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Configuration items - properties and services."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultIncludes" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Same as ``includes``, but default includes are used only if the parent context doesn't contain configuration items with requested keys (names or types)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="baseURL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Base URL to resolve includes, default includes, and classpath entries. &#xD;&#xA;The URL is resolved relative to the model location and defaults to the model location URL."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="classPath" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Class path for loading classes of configuration elements."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="include" upperBound="-1"
+        eType="#//Configuration">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Configurations defined elsewhere to be included into this configuration. &#xD;&#xA;Configurations get chained and configuration items (properties and services) get&#xD;&#xA;mounted to the context created by this configuration."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Optional description."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConfigurationItem" abstract="true">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Configuration item contributes to the context of Configurable and can itself be configurable.&#xD;&#xA;"/>
+    </eAnnotations>
+    <eGenericSuperTypes eClassifier="#//Configuration"/>
+    <eGenericSuperTypes eClassifier="#//Provider">
+      <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Service" eSuperTypes="#//ValueConfigurationItem">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Service is a configuration item keyed by its type or one of types it implements/extends.&#xD;&#xA;"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serviceType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Service type. Shall be a superclass or implemented interface of the value type.&#xD;&#xA;Defaults to value type."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Property" eSuperTypes="#//ValueConfigurationItem #//NamedConfigurationItem">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Property is a valued configuration item keyed by a String."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Context" instanceClassName="org.nasdanika.config.Context">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Context provides access to properties and services. Contexts are typically chained&#xD;&#xA;with a child context &quot;inheriting&quot; properties and services of the parent context(s)."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Provider" instanceClassName="org.nasdanika.config.Provider"
+      abstract="true" interface="true">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Providers are used to create configuration items using given context."/>
+    </eAnnotations>
+    <eTypeParameters name="T"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Exception" instanceClassName="java.lang.Exception"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="List" instanceClassName="java.util.List">
+    <eTypeParameters name="T"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ValueConfigurationItem" abstract="true"
+      eSuperTypes="#//ConfigurationItem">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Value configuration items can be configured with value in addition to configuration elements.&#xD;&#xA;&#xD;&#xA;If ``scripted`` is true, the value is evaluated as a script.&#xD;&#xA;&#xD;&#xA;Script is a Java method body returning Object and taking ``Context contect, String valueType`` paramters:&#xD;&#xA;&#xD;&#xA;```java&#xD;&#xA;Object evaluate(Context context, String valueType) throws Exception {&#xD;&#xA;    // --- Script here ---&#xD;&#xA;}&#xD;&#xA;```&#xD;&#xA;&#xD;&#xA;Otherwise, value and configuration items are injected into the configuration item via constructor. An appropriate constructor is selected based on &#xD;&#xA;whether the value is blank and configuration items are present:&#xD;&#xA;&#xD;&#xA;* Empty values collection - single value object is instantiated with:&#xD;&#xA;  * No configuration items - default constructor or a constructor which takes Context.&#xD;&#xA;  * Configuration items - a constructor which takes Context.&#xD;&#xA;* Non-empty values collection:&#xD;&#xA;  * No configuration items - a constructor which takes String. If value is blank then the default constructor will be considered first, if exists.&#xD;&#xA;  * Configuration items - a constructor which takes String and Context in any order. If value is blank then a constructor which takes Context will be considered first.&#xD;&#xA;&#xD;&#xA;If configuration item's type is assignable from ``org.nasdanika.config.Provider``, then it gets instantiated using&#xD;&#xA;either the default constructor, if it exists and value is blank, or a constructor which takes String. The provider's ``get(Context)`` method is used&#xD;&#xA;to obtain actual configuration item.&#xD;&#xA;&#xD;&#xA;If value is not blank, it is interpolated using properties already defined in the context and inherited from the parent context. &#xD;&#xA;Interpolation is the process of expanding tokens enclosed into double-curly brackets to the values of properties with corresponding names.&#xD;&#xA;&#xD;&#xA;If a property with a given name is not defined, a token does not get expanded.&#xD;&#xA;&#xD;&#xA;Example:&#xD;&#xA;```&#xD;&#xA;{{base-package}}.impl&#xD;&#xA;```&#xD;&#xA;&#xD;&#xA;If values size is greater than one, then value is an array with elments of ``valueType``. As such multi-value services are keyed by ``valueType[]`` as opposed to ``valueType`` for single-value or no value services."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Configuration item value type. Defaults to ``java.lang.String``."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Configuration item values. &#xD;&#xA;"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Regular configuration shadow/override configuration items defined in parent context(s),&#xD;&#xA;default configuration items, on the contrary, get shadowed by parent's configuration items&#xD;&#xA;with the same keys."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scripted" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="If true, value is treated as script and evaluated to compute actual value. &#xD;&#xA;"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedConfigurationItem" eSuperTypes="#//ConfigurationItem">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Named configuration is keyed by a String.&#xD;&#xA;&#xD;&#xA;Named configuration item is facaded by Context at runtime. Properties of the named configuration item can be accessed using / separator, e.g. ``feature/includedFeatures``."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Property name."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="SubMonitor" instanceClassName="org.eclipse.core.runtime.SubMonitor"/>
+</ecore:EPackage>

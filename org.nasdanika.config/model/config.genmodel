@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.nasdanika.config/src" modelPluginID="org.nasdanika.config"
+    modelName="Config" rootExtendsInterface="org.eclipse.emf.cdo.CDOObject" rootExtendsClass="org.eclipse.emf.internal.cdo.CDOObjectImpl"
+    reflectiveDelegation="true" importerID="org.eclipse.emf.importer.cdo" featureDelegation="Reflective"
+    complianceLevel="8.0" suppressGenModelAnnotations="false" copyrightFields="false"
+    providerRootExtendsClass="org.nasdanika.config.provider.CDOItemProviderAdapterEx"
+    operationReflection="true" importOrganizing="true" decoration="Manual">
+  <foreignModel>config.ecore</foreignModel>
+  <modelPluginVariables>CDO=org.eclipse.emf.cdo</modelPluginVariables>
+  <genPackages prefix="Config" basePackage="org.nasdanika" disposableProviderFactory="true"
+      fileExtensions="nsdgen" ecorePackage="config.ecore#/">
+    <genDataTypes ecoreDataType="config.ecore#//Context"/>
+    <genDataTypes ecoreDataType="config.ecore#//Exception"/>
+    <genDataTypes ecoreDataType="config.ecore#//List">
+      <genTypeParameters ecoreTypeParameter="config.ecore#//List/T"/>
+    </genDataTypes>
+    <genDataTypes ecoreDataType="config.ecore#//SubMonitor"/>
+    <genClasses ecoreClass="config.ecore#//Configuration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//Configuration/includes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference config.ecore#//Configuration/configuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//Configuration/defaultIncludes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//Configuration/baseURL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//Configuration/classPath"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference config.ecore#//Configuration/include"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute config.ecore#//Configuration/description"/>
+      <genOperations ecoreOperation="config.ecore#//Configuration/createContext">
+        <genParameters ecoreParameter="config.ecore#//Configuration/createContext/parent"/>
+        <genParameters ecoreParameter="config.ecore#//Configuration/createContext/monitor"/>
+      </genOperations>
+      <genOperations ecoreOperation="config.ecore#//Configuration/validate">
+        <genParameters ecoreParameter="config.ecore#//Configuration/validate/diagnostics"/>
+        <genParameters ecoreParameter="config.ecore#//Configuration/validate/context"/>
+      </genOperations>
+      <genOperations ecoreOperation="config.ecore#//Configuration/getConfigWorkSize"/>
+    </genClasses>
+    <genClasses ecoreClass="config.ecore#//ConfigurationItem"/>
+    <genClasses ecoreClass="config.ecore#//Service">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//Service/serviceType"/>
+    </genClasses>
+    <genClasses ecoreClass="config.ecore#//Property"/>
+    <genClasses ecoreClass="config.ecore#//Provider">
+      <genTypeParameters ecoreTypeParameter="config.ecore#//Provider/T"/>
+    </genClasses>
+    <genClasses ecoreClass="config.ecore#//ValueConfigurationItem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//ValueConfigurationItem/valueType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//ValueConfigurationItem/values"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//ValueConfigurationItem/default"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//ValueConfigurationItem/scripted"/>
+    </genClasses>
+    <genClasses ecoreClass="config.ecore#//NamedConfigurationItem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//NamedConfigurationItem/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
