@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><?eclipse version="3.0"?>
+<plugin>
+
+
+  <extension point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.nasdanika.config.editor.Generate"
+            objectClass="org.nasdanika.config.WorkspaceRoot">
+         <action
+               id="org.nasdanika.config.editor.Generate"
+               label="Generate"
+               menubarPath="additions"
+               class="org.nasdanika.config.presentation.GenerateAction"
+               enablesFor="1"/>
+      </objectContribution>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated Config -->
+      <category
+            id="org.nasdanika"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.nasdanika.config.presentation.ConfigModelWizardID"
+            name="%_UI_ConfigModelWizard_label"
+            class="org.nasdanika.config.presentation.ConfigModelWizard"
+            category="org.nasdanika"
+            icon="icons/full/obj16/ConfigModelFile.gif">
+         <description>%_UI_ConfigModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated Config -->
+      <editor
+            id="org.nasdanika.config.presentation.ConfigEditorID"
+            name="%_UI_ConfigEditor_label"
+            icon="icons/full/obj16/ConfigModelFile.gif"
+            extensions="nsdconf"
+            class="org.nasdanika.config.presentation.ConfigEditor"
+            contributorClass="org.nasdanika.config.presentation.ConfigActionBarContributor">
+      </editor>
+   </extension>
+</plugin>

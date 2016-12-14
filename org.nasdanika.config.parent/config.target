@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="Running Platform" sequenceNumber="5">
+<locations>
+<location path="${eclipse_home}" type="Profile"/>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.codehaus.janino.commons-compiler" version="3.0.6"/>
+<unit id="org.codehaus.janino" version="3.0.6"/>
+<repository location="http://www.nasdanika.org/maven-osgi"/>
+</location>
+</locations>
+<environment>
+<os>win32</os>
+<ws>win32</ws>
+<arch>x86_64</arch>
+<nl>en_US</nl>
+</environment>
+<launcherArgs>
+<vmArgs>-Dosgi.requiredJavaVersion=1.8 -Dosgi.requiredJavaVersion=1.8 -Xms256m -Xmx3G -XX:+UseG1GC -XX:+UseStringDeduplication</vmArgs>
+</launcherArgs>
+</target>

@@ -9,7 +9,7 @@
   <foreignModel>config.ecore</foreignModel>
   <modelPluginVariables>CDO=org.eclipse.emf.cdo</modelPluginVariables>
   <genPackages prefix="Config" basePackage="org.nasdanika" disposableProviderFactory="true"
-      fileExtensions="nsdgen" ecorePackage="config.ecore#/">
+      fileExtensions="nsdconf" ecorePackage="config.ecore#/">
     <genDataTypes ecoreDataType="config.ecore#//Context"/>
     <genDataTypes ecoreDataType="config.ecore#//Exception"/>
     <genDataTypes ecoreDataType="config.ecore#//List">
