@@ -250,4 +250,4 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 		return null;
 	}
 
-} //CodegenSwitch
+} //ConfigSwitch

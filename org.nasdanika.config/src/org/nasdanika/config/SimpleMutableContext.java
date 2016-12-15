@@ -9,7 +9,7 @@ public class SimpleMutableContext implements MutableContext {
 	private Map<Class<?>, Object> services = new HashMap<>();
 	private Map<String, Object> properties = new HashMap<>();
 	private Context[] parents;
-	private ClassLoader classLoader;
+	private ClassLoader classLoader = getClass().getClassLoader();
 	
 	public SimpleMutableContext(Context... parents) {
 		this.parents = parents;

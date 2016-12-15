@@ -225,4 +225,4 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 		return null;
 	}
 
-} //CodegenAdapterFactory
+} //ConfigAdapterFactory

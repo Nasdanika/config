@@ -318,4 +318,4 @@ public class ConfigValidator extends EObjectValidator {
 		return super.getResourceLocator();
 	}
 
-} //CodegenValidator
+} //ConfigValidator

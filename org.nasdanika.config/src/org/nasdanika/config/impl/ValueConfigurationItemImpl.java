@@ -213,7 +213,7 @@ public abstract class ValueConfigurationItemImpl extends ConfigurationItemImpl i
 	@Override
 	public Object get(Context context, SubMonitor monitor) throws Exception {
 		Context thisContext = createContext(context, monitor);
-		Class<?> valueClass = thisContext.getClassLoader().loadClass(getValueType().trim());
+		Class<?> valueClass = getValueType() == null || getValueType().trim().length() == 0 ? String.class : thisContext.getClassLoader().loadClass(getValueType().trim());
 	
 		if (getValues().isEmpty()) {
 			return createValue(thisContext, valueClass, null, monitor);

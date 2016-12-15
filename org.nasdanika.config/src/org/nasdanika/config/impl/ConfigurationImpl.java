@@ -8,9 +8,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -18,7 +19,6 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 import org.nasdanika.config.ConfigPackage;
 import org.nasdanika.config.Configuration;
@@ -173,11 +173,32 @@ public class ConfigurationImpl extends CDOObjectImpl implements Configuration {
 	 * @generated NOT
 	 */
 	public Context createContext(Context parent, SubMonitor monitor) throws Exception {
+		if (parent == null) {
+			parent = new Context() {
+				
+				@Override
+				public ClassLoader getClassLoader() {
+					return getClass().getClassLoader();
+				}
+				
+				@Override
+				public <T> T get(Class<T> type) {
+					return null;
+				}
+				
+				@Override
+				public Object get(String name) {
+					return null;
+				}
+				
+			};
+		}		
+		
 		monitor.subTask("Loading configuration");
 		// Includes
 		// TODO - implement
 		if (!getIncludes().isEmpty()) {
-			throw new UnsupportedOperationException("'includes' is not yet supported, feel free to implement and contribute - https://github.com/Nasdanika/codegen");
+			throw new UnsupportedOperationException("'includes' is not yet supported, feel free to implement and contribute - https://github.com/Nasdanika/config");
 		}
 
 		// Include
@@ -190,12 +211,13 @@ public class ConfigurationImpl extends CDOObjectImpl implements Configuration {
 		for (int i = 0; i < getClassPath().size(); ++i) {
 			classPathURLs[i] = new URL(resolveBaseURL(), getClassPath().get(i));
 		}
+		
 		ClassLoader classLoader = classPathURLs == null ? parent.getClassLoader() : new URLClassLoader(classPathURLs, parent.getClassLoader());
 				
 		// Configuration items
 		Map<String, Object> properties = new HashMap<>();
 		Map<String, Object> defaultProperties = new HashMap<>();
-		Map<String, Context> subContexts = new LinkedHashMap<>();
+//		Map<String, Context> subContexts = new LinkedHashMap<>();
 		Map<Class<?>, Object> services = new HashMap<>();
 		Map<Class<?>, Object> defaultServices = new HashMap<>();
 				
@@ -209,22 +231,20 @@ public class ConfigurationImpl extends CDOObjectImpl implements Configuration {
 					return null;
 				}
 				
-				// Sub-contexts - only properties or subcontexts themselves.
-				for (Entry<String, Context> sce: subContexts.entrySet()) {
-					if (name.equals(sce.getKey())) {
-						return sce.getValue();
-					}
-					
-					if (name.startsWith(sce.getKey()+PROPERTY_PATH_SEPARATOR)) {
-						return sce.getValue().get(name.substring(sce.getKey().length()+PROPERTY_PATH_SEPARATOR.length())); 
-					}
-				}				
-				
 				// Properties
 				Object ret =  properties.get(name);
 				if (ret != null) {
 					return ret;
 				}
+								
+				// Sub-contexts - only properties or subcontexts themselves.
+				for (Entry<String, Object> pe: properties.entrySet()) {
+					if (pe.getValue() instanceof Context) {
+						if (name.startsWith(pe.getKey()+PROPERTY_PATH_SEPARATOR)) {
+							return ((Context) pe.getValue()).get(name.substring(pe.getKey().length()+PROPERTY_PATH_SEPARATOR.length())); 
+						}
+					}
+				}								
 				
 				// Parent
 				if (finalParent != null) {
@@ -293,7 +313,7 @@ public class ConfigurationImpl extends CDOObjectImpl implements Configuration {
 				Property property = (Property) ci;				
 				(property.isDefault() ? defaultProperties : properties).put(property.getName(), obj);								
 			} else {
-				subContexts.put(((NamedConfigurationItem) ci).getName(), ci.createContext(new Context() {
+				properties.put(((NamedConfigurationItem) ci).getName(), ci.createContext(new Context() {
 					
 					@Override
 					public ClassLoader getClassLoader() {
@@ -330,7 +350,7 @@ public class ConfigurationImpl extends CDOObjectImpl implements Configuration {
 						(Diagnostic.ERROR,
 						 ConfigValidator.DIAGNOSTIC_SOURCE,
 						 ConfigValidator.CONFIGURATION__VALIDATE,
-						 "["+EObjectValidator.getObjectLabel(this, context)+"] Includes are not currently supported - feel free to contribute - https://github.com/Nasdanika/codegen",
+						 "Includes are not currently supported - feel free to contribute - https://github.com/Nasdanika/config",
 						 new Object [] { this, ConfigPackage.Literals.CONFIGURATION__INCLUDES }));
 				
 				result = false;
@@ -344,13 +364,50 @@ public class ConfigurationImpl extends CDOObjectImpl implements Configuration {
 						(Diagnostic.ERROR,
 						 ConfigValidator.DIAGNOSTIC_SOURCE,
 						 ConfigValidator.CONFIGURATION__VALIDATE,
-						 "["+EObjectValidator.getObjectLabel(this, context)+"] Default includes are not currently supported - feel free to contribute - https://github.com/Nasdanika/codegen",
+						 "Default includes are not currently supported - feel free to contribute - https://github.com/Nasdanika/config",
 						 new Object [] { this, ConfigPackage.Literals.CONFIGURATION__INCLUDES }));
 				
 				result = false;
 				
 				// TODO - once includes are supported validate extensions - .properties, .json, .yml, .nsdgen - and validate URL's.
 			}
+			
+			Set<String> propertyNames = new HashSet<>();
+			Set<String> serviceTypes = new HashSet<>();
+			for (ConfigurationItem ci: getConfiguration()) {
+				if (ci instanceof NamedConfigurationItem) {
+					if (!propertyNames.add(((NamedConfigurationItem) ci).getName())) {
+						diagnostics.add
+							(new BasicDiagnostic
+								(Diagnostic.ERROR,
+								 ConfigValidator.DIAGNOSTIC_SOURCE,
+								 ConfigValidator.CONFIGURATION__VALIDATE,
+								 "Duplicate property name: "+((NamedConfigurationItem) ci).getName(),
+								 new Object [] { ci, ConfigPackage.Literals.NAMED_CONFIGURATION_ITEM__NAME }));
+						
+						result = false;						
+					}
+				} else {
+					String st = ((Service) ci).getServiceType();
+					if (st == null || st.trim().length() == 0) {
+						st = ((Service) ci).getValueType();
+					}
+					if (st == null || st.trim().length() == 0) {
+						st = String.class.getName();
+					}
+					if (!serviceTypes.add(st)) {
+						diagnostics.add
+							(new BasicDiagnostic
+								(Diagnostic.ERROR,
+								 ConfigValidator.DIAGNOSTIC_SOURCE,
+								 ConfigValidator.CONFIGURATION__VALIDATE,
+								 "Duplicate service type: "+st,
+								 new Object [] { ci, ConfigPackage.Literals.SERVICE__SERVICE_TYPE }));
+						
+						result = false;						
+					}					
+				}
+			}						
 		}
 		return result;
 	}

@@ -8,7 +8,7 @@ dependencies:
 
 test:
   override:
-    - mvn clean package
+    - mvn clean verify
     
   post:
     - mv org.nasdanika.config.repository/target/repository $CIRCLE_ARTIFACTS    

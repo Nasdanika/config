@@ -25,6 +25,7 @@
 	<modules>
 
 		<module>org.nasdanika.config</module>
+		<module>org.nasdanika.config.tests</module>
 		<module>org.nasdanika.config.edit</module>
 		<module>org.nasdanika.config.editor</module>
 		<module>org.nasdanika.config.feature</module>
