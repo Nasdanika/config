@@ -19,6 +19,7 @@ application logic.
 * File > New > Other > Nasdanika/Config Model.
 * Select Configuration as the root model element.
 * Add and configure properties, services, and configuration categories.
+* Right-click on the model root or other model element and select "Validate" context menu item to validate the model.
 
 ## Creating configuration (context) from the model
 
