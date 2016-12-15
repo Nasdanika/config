@@ -2,11 +2,11 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="config" nsURI="urn:org.nasdanika.config" nsPrefix="org.nasdanika.config">
   <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-    <details key="documentation" value="Code generation model."/>
+    <details key="documentation" value="Configuration model."/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Configuration">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Container of configuration items - properties and services.&#xD;&#xA;Generators extend configuration. Configuration can also be defined in a standalone model to be provided as input to generators.&#xD;&#xA;"/>
+      <details key="documentation" value="Container of configuration items - properties and services."/>
     </eAnnotations>
     <eOperations name="createContext" eType="#//Context" eExceptions="#//Exception">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -21,7 +21,7 @@
     </eOperations>
     <eOperations name="validate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Validates element for execution/generation. Adds messages to diagnostics and "/>
+        <details key="documentation" value="Validates element."/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

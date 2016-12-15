@@ -206,16 +206,32 @@ public class ConfigurationImpl extends CDOObjectImpl implements Configuration {
 			parent = inc.createContext(parent, monitor);
 		}
 		
+		// Base URL
+		Object pbup = parent.get(BASE_URL_PROPERTY);
+		URL parentBaseURL = pbup instanceof URL ? (URL) pbup : null;
+		if (parentBaseURL == null) {
+			try {
+				parentBaseURL = new URL(eResource().getURI().toString());
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}
+		}
+		URL baseURL = parentBaseURL;
+		Map<String, Object> properties = new HashMap<>();
+		if (getBaseURL() != null && getBaseURL().trim().length() > 0) {
+			baseURL = new URL(baseURL, getBaseURL());
+			properties.put(BASE_URL_PROPERTY, baseURL);
+		}
+		
 		// ClassLoader
 		URL[] classPathURLs = getClassPath().isEmpty() ? null : new URL[getClassPath().size()];
 		for (int i = 0; i < getClassPath().size(); ++i) {
-			classPathURLs[i] = new URL(resolveBaseURL(), getClassPath().get(i));
+			classPathURLs[i] = new URL(baseURL, getClassPath().get(i));
 		}
 		
 		ClassLoader classLoader = classPathURLs == null ? parent.getClassLoader() : new URLClassLoader(classPathURLs, parent.getClassLoader());
 				
 		// Configuration items
-		Map<String, Object> properties = new HashMap<>();
 		Map<String, Object> defaultProperties = new HashMap<>();
 //		Map<String, Context> subContexts = new LinkedHashMap<>();
 		Map<Class<?>, Object> services = new HashMap<>();
@@ -452,28 +468,6 @@ public class ConfigurationImpl extends CDOObjectImpl implements Configuration {
 				return getConfigWorkSize();
 		}
 		return super.eInvoke(operationID, arguments);
-	}
-
-	/**
-	 * Resolves base URL
-	 * @return
-	 * @throws Exception
-	 */
-	protected URL resolveBaseURL() throws Exception {		
-		URL baseURL = null;
-		if (eContainer() instanceof ConfigurationImpl) {
-			baseURL = ((ConfigurationImpl) eContainer()).resolveBaseURL();
-		} else {
-			try {
-				baseURL = new URL(eResource().getURI().toString());
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			}
-		}
-		if (getBaseURL() != null && getBaseURL().trim().length() > 0) {
-			baseURL = new URL(baseURL, getBaseURL());
-		}
-		return baseURL;
 	}
 	
 } //ConfigurationImpl

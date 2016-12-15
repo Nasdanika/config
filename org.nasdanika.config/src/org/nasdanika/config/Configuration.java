@@ -39,6 +39,12 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Configuration extends CDOObject {
+	
+	/**
+	 * Property which contains base URL.
+	 */
+	String BASE_URL_PROPERTY = "base-url";
+	
 	/**
 	 * Returns the value of the '<em><b>Includes</b></em>' attribute list.
 	 * The list contents are of type {@link java.lang.String}.
