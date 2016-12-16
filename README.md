@@ -16,7 +16,7 @@ application logic.
 ## Creating a model
 
 * Install Configuration editor from ``http://www.nasdanika.org/products/config/repository``.
-* File > New > Other > Nasdanika/Config Model.
+* File > New > Other > Nasdanika/Configuration Model.
 * Select Configuration as the root model element.
 * Add and configure properties, services, and configuration categories.
 * Right-click on the model root or other model element and select "Validate" context menu item to validate the model.

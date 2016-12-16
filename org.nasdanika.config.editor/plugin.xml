@@ -2,19 +2,6 @@
 <plugin>
 
 
-  <extension point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            id="org.nasdanika.config.editor.Generate"
-            objectClass="org.nasdanika.config.WorkspaceRoot">
-         <action
-               id="org.nasdanika.config.editor.Generate"
-               label="Generate"
-               menubarPath="additions"
-               class="org.nasdanika.config.presentation.GenerateAction"
-               enablesFor="1"/>
-      </objectContribution>
-   </extension>
-
    <extension point="org.eclipse.ui.newWizards">
       <!-- @generated Config -->
       <category
