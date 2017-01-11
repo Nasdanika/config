@@ -120,6 +120,9 @@ See [Model API Documentation](http://www.nasdanika.org/products/config/apidocs/o
 * HTML documentation generator for the configuration model, treat description as markdown.
 * Enhance the model editor with a form on the right of the model tree. The form shall provide edit controls for the currently selected configuration element with live validation and context help generated from the GenModel documentation annotations.
 * Eclipse help.
+* Integrate EMF Forms, customize to display context help for form elements generated from model documentation annotations.
+* Profiles
+* Export of assembled context to JSON and YAML.
 * Tests covering all aspects of the configuration model. 
 
 ## How to contribute

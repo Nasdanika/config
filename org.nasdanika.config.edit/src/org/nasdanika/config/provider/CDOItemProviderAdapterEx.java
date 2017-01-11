@@ -34,7 +34,7 @@ public class CDOItemProviderAdapterEx extends CDOItemProviderAdapter {
 
 	/**
 	 * Collects compatible children from all models in the global registry except this one.  
-	 * This behavior allows extending codegen editor with new model elements by simply installing
+	 * This behavior allows extending config/codegen editor with new model elements by simply installing
 	 * new models into IDE.
 	 */
 	@Override
