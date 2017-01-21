@@ -9,7 +9,11 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emfforms.editor;bundle-version="1.8.0",
  org.eclipse.ui,
  org.eclipse.jface,
- org.eclipse.jdt.core;bundle-version="3.12.1"
+ org.eclipse.jdt.core;bundle-version="3.12.1",
+ org.eclipse.ui.forms,
+ org.eclipse.emf.ecp.view.model.provider.xmi;bundle-version="1.11.0",
+ org.eclipse.emf.ecp.view.model.provider.generator;bundle-version="1.11.0",
+ org.eclipse.emf.ecp.ui.view.swt;bundle-version="1.11.0"
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

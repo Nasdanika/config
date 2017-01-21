@@ -17,7 +17,7 @@
     </genDataTypes>
     <genDataTypes ecoreDataType="config.ecore#//SubMonitor"/>
     <genClasses ecoreClass="config.ecore#//Configuration">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//Configuration/includes"/>
+      <genFeatures createChild="false" propertyCategory="" ecoreFeature="ecore:EAttribute config.ecore#//Configuration/includes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference config.ecore#//Configuration/configuration"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//Configuration/defaultIncludes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//Configuration/baseURL"/>
@@ -44,7 +44,7 @@
     </genClasses>
     <genClasses ecoreClass="config.ecore#//ValueConfigurationItem">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//ValueConfigurationItem/valueType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//ValueConfigurationItem/values"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute config.ecore#//ValueConfigurationItem/values"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//ValueConfigurationItem/default"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//ValueConfigurationItem/scripted"/>
     </genClasses>

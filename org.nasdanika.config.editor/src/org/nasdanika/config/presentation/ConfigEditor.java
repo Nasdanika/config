@@ -978,7 +978,7 @@ public class ConfigEditor
 	 * This is the method used by the framework to install your own controls.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void createPages() {
@@ -993,22 +993,21 @@ public class ConfigEditor
 			//
 			{
 				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), ConfigEditor.this) {
-						@Override
-						public Viewer createViewer(Composite composite) {
-							Tree tree = new Tree(composite, SWT.MULTI);
-							TreeViewer newTreeViewer = new TreeViewer(tree);
-							return newTreeViewer;
-						}
-						@Override
-						public void requestActivation() {
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
+						new ViewerPane(getSite().getPage(), ConfigEditor.this) {
+							@Override
+							public Viewer createViewer(Composite composite) {
+								MasterDetailForm masterDetailForm = new MasterDetailForm(composite, SWT.NONE);
+								return new MasterDetailViewer(masterDetailForm);
+							}
+							@Override
+							public void requestActivation() {
+								super.requestActivation();
+								setCurrentViewerPane(this);
+							}
+						};
 				viewerPane.createControl(getContainer());
 
-				selectionViewer = (TreeViewer)viewerPane.getViewer();
+				selectionViewer = ((MasterDetailViewer) viewerPane.getViewer()).getTreeViewer();
 				selectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
 
 				selectionViewer.setLabelProvider(new DecoratingColumLabelProvider(new AdapterFactoryLabelProvider(adapterFactory), new DiagnosticDecorator(editingDomain.getResourceSet(), selectionViewer)));

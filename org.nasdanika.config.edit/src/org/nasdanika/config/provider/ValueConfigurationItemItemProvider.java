@@ -89,7 +89,7 @@ public class ValueConfigurationItemItemProvider extends ConfigurationItemItemPro
 				 getString("_UI_PropertyDescriptor_description", "_UI_ValueConfigurationItem_values_feature", "_UI_ValueConfigurationItem_type"),
 				 ConfigPackage.Literals.VALUE_CONFIGURATION_ITEM__VALUES,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
