@@ -1,13 +1,21 @@
 package org.nasdanika.config.ecp.renderers;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.eclipse.core.databinding.property.value.IValueProperty;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecp.view.spi.context.ViewModelContext;
 import org.eclipse.emf.ecp.view.spi.core.swt.renderer.TextControlSWTRenderer;
 import org.eclipse.emf.ecp.view.spi.model.VControl;
@@ -56,7 +64,13 @@ import org.nasdanika.config.presentation.ConfigEditorPlugin;
 
 public class JavaClassControlRenderer extends TextControlSWTRenderer {
 	 
+	private static final String ROOT_TYPE_KEY = "root-type";
+	private static final String SUPER_CLASS_KEY = "super-class";
+	private static final String SUPER_INTERFACES_KEY = "super-interfaces";
 	private IProject project;
+	private String superClassName = "java.lang.Object";
+	private String rootTypeName = "java.lang.Object";
+	private List<String> superInterfaces = new ArrayList<>();
 
 	@Inject
 	public JavaClassControlRenderer(
@@ -82,6 +96,33 @@ public class JavaClassControlRenderer extends TextControlSWTRenderer {
 		if (modelFile.exists()) {
 			project = modelFile.getProject();
 		}		
+		try {
+			IValueProperty valueProperty = emfFormsDatabinding.getValueProperty(((VControl) vElement).getDomainModelReference(), viewContext.getDomainModel());
+			EStructuralFeature eStructuralFeature = EStructuralFeature.class.cast(valueProperty.getValueType());
+			EAnnotation javaClassAnnotation = eStructuralFeature.getEAnnotation(JavaClassSWTRendererService.JAVA_CLASS_ANNOTATION);
+			if (javaClassAnnotation != null) {
+				EMap<String, String> details = javaClassAnnotation.getDetails();
+				if (details.containsKey(SUPER_CLASS_KEY)) {
+					superClassName = details.get(SUPER_CLASS_KEY).trim();
+				}
+				if (details.containsKey(ROOT_TYPE_KEY)) {
+					rootTypeName = details.get(ROOT_TYPE_KEY).trim();
+				}
+				if (details.containsKey(SUPER_INTERFACES_KEY)) {
+					BufferedReader br = new BufferedReader(new StringReader(details.get(SUPER_INTERFACES_KEY)));
+					String line;
+					while ((line = br.readLine()) != null) {
+						String trimmedLine = line.trim();
+						if (trimmedLine.length() > 0) {
+							superInterfaces.add(trimmedLine);
+						}
+					}
+				}
+			}
+		} catch (final DatabindingFailedException | IOException ex) {
+			reportService.report(new DatabindingFailedReport(ex));
+		}
+
 	}
 	
 	@Override
@@ -96,7 +137,7 @@ public class JavaClassControlRenderer extends TextControlSWTRenderer {
 			@SuppressWarnings("unchecked")
 			@Override
 			public void mouseUp(MouseEvent e) {
-				String className = createClass(parent.getShell(), null, null);
+				String className = createClass(parent.getShell());
 				if (className != null) {
 					try {
 						getModelValue().setValue(className);
@@ -124,7 +165,7 @@ public class JavaClassControlRenderer extends TextControlSWTRenderer {
 			@Override
 			public void widgetSelected(SelectionEvent e) {				
 				try {
-					String className = findClass("java.lang.Object", parent.getShell(), (String) getModelValue().getValue());
+					String className = findClass(parent.getShell(), (String) getModelValue().getValue());
 					if (className != null) {
 						getModelValue().setValue(className);
 					}
@@ -140,7 +181,7 @@ public class JavaClassControlRenderer extends TextControlSWTRenderer {
 	 * Opens a dialog for class creation.
 	 * @return class name.
 	 */
-	protected String createClass(Shell shell, String superClass, List<String> superInterfaces) {
+	protected String createClass(Shell shell) {
 		try {
 			IWorkbench workbench = PlatformUI.getWorkbench();
 			IWizardDescriptor descriptor = workbench.getNewWizardRegistry().findWizard("org.eclipse.jdt.ui.wizards.NewClassCreationWizard");
@@ -156,9 +197,7 @@ public class JavaClassControlRenderer extends TextControlSWTRenderer {
 						if (superInterfaces != null && !superInterfaces.isEmpty()) {
 							ncwp.setSuperInterfaces(superInterfaces, true);
 						}
-						if (superClass != null) {
-							ncwp.setSuperClass(superClass, true);
-						}
+						ncwp.setSuperClass(superClassName, true);
 					}
 				}
 			});
@@ -182,13 +221,13 @@ public class JavaClassControlRenderer extends TextControlSWTRenderer {
 	 * Opens a dialog to find class.
 	 * @return class name
 	 */
-	protected String findClass(String rootTypeName, Shell shell, String initialPattern) {
+	protected String findClass(Shell shell, String initialPattern) {
 		try {
 			if (project.isOpen() && project.getNature(JavaCore.NATURE_ID) != null) {
 				IJavaProject javaProject = JavaCore.create(project);
 				IType rootType = javaProject.findType(rootTypeName); 
 				if (rootType == null) {
-					MessageDialog.openError(shell, "Root type not found", rootTypeName+" is not found in the project's scope.");
+					MessageDialog.openError(shell, "Root type not found", superClassName+" is not found in the project's scope.");
 				} else {
 					IJavaSearchScope scope = SearchEngine.createHierarchyScope(rootType);
 					SelectionDialog typeDialog = JavaUI.createTypeDialog(

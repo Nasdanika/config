@@ -1,6 +1,8 @@
 package org.nasdanika.config.ecp.renderers;
 
 import org.eclipse.core.databinding.property.value.IValueProperty;
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecp.view.spi.context.ViewModelContext;
 import org.eclipse.emf.ecp.view.spi.model.VControl;
@@ -15,6 +17,7 @@ import org.nasdanika.config.ConfigPackage;
 
 public class JavaClassSWTRendererService implements EMFFormsDIRendererService<VControl> {
 	 
+	public static final String JAVA_CLASS_ANNOTATION = "org.nasdanika.ui.java-class";
 	private EMFFormsDatabinding databindingService;
 	private ReportService reportService;
  
@@ -50,7 +53,8 @@ public class JavaClassSWTRendererService implements EMFFormsDIRendererService<VC
 			return NOT_APPLICABLE;
 		}
 		EStructuralFeature eStructuralFeature = EStructuralFeature.class.cast(valueProperty.getValueType());
-		if (ConfigPackage.eINSTANCE.getConfiguration_BaseURL().equals(eStructuralFeature)) {
+		EAnnotation javaClassAnnotation = eStructuralFeature.getEAnnotation(JAVA_CLASS_ANNOTATION);
+		if (eStructuralFeature instanceof EAttribute && !eStructuralFeature.isMany() && javaClassAnnotation != null) {
 			return 10;
 		}
 		return NOT_APPLICABLE;
