@@ -13,6 +13,9 @@ public class SimpleMutableContext implements MutableContext {
 	
 	public SimpleMutableContext(Context... parents) {
 		this.parents = parents;
+		if (parents.length > 0) {
+			classLoader = parents[0].getClassLoader();
+		}
 	}
 
 	public SimpleMutableContext set(String name, Object value) {
