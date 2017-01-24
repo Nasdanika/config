@@ -112,14 +112,14 @@ public class ConfigValidator extends EObjectValidator {
 				return validateConfiguration((Configuration)value, diagnostics, context);
 			case ConfigPackage.CONFIGURATION_ITEM:
 				return validateConfigurationItem((ConfigurationItem)value, diagnostics, context);
+			case ConfigPackage.VALUE_CONFIGURATION_ITEM:
+				return validateValueConfigurationItem((ValueConfigurationItem)value, diagnostics, context);
 			case ConfigPackage.SERVICE:
 				return validateService((Service)value, diagnostics, context);
 			case ConfigPackage.PROPERTY:
 				return validateProperty((Property)value, diagnostics, context);
 			case ConfigPackage.PROVIDER:
 				return validateProvider((Provider<?>)value, diagnostics, context);
-			case ConfigPackage.VALUE_CONFIGURATION_ITEM:
-				return validateValueConfigurationItem((ValueConfigurationItem)value, diagnostics, context);
 			case ConfigPackage.NAMED_CONFIGURATION_ITEM:
 				return validateNamedConfigurationItem((NamedConfigurationItem)value, diagnostics, context);
 			case ConfigPackage.CONTEXT:

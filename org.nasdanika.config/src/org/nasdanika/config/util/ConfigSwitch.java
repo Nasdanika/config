@@ -80,6 +80,15 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ConfigPackage.VALUE_CONFIGURATION_ITEM: {
+				ValueConfigurationItem valueConfigurationItem = (ValueConfigurationItem)theEObject;
+				T1 result = caseValueConfigurationItem(valueConfigurationItem);
+				if (result == null) result = caseConfigurationItem(valueConfigurationItem);
+				if (result == null) result = caseConfiguration(valueConfigurationItem);
+				if (result == null) result = caseProvider(valueConfigurationItem);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case ConfigPackage.SERVICE: {
 				Service service = (Service)theEObject;
 				T1 result = caseService(service);
@@ -104,15 +113,6 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 			case ConfigPackage.PROVIDER: {
 				Provider<?> provider = (Provider<?>)theEObject;
 				T1 result = caseProvider(provider);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ConfigPackage.VALUE_CONFIGURATION_ITEM: {
-				ValueConfigurationItem valueConfigurationItem = (ValueConfigurationItem)theEObject;
-				T1 result = caseValueConfigurationItem(valueConfigurationItem);
-				if (result == null) result = caseConfigurationItem(valueConfigurationItem);
-				if (result == null) result = caseConfiguration(valueConfigurationItem);
-				if (result == null) result = caseProvider(valueConfigurationItem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

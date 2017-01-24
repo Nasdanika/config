@@ -76,6 +76,10 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 				return createConfigurationItemAdapter();
 			}
 			@Override
+			public Adapter caseValueConfigurationItem(ValueConfigurationItem object) {
+				return createValueConfigurationItemAdapter();
+			}
+			@Override
 			public Adapter caseService(Service object) {
 				return createServiceAdapter();
 			}
@@ -86,10 +90,6 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public <T> Adapter caseProvider(Provider<T> object) {
 				return createProviderAdapter();
-			}
-			@Override
-			public Adapter caseValueConfigurationItem(ValueConfigurationItem object) {
-				return createValueConfigurationItemAdapter();
 			}
 			@Override
 			public Adapter caseNamedConfigurationItem(NamedConfigurationItem object) {

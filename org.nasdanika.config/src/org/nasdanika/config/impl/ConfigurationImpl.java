@@ -37,13 +37,13 @@ import org.nasdanika.config.util.ConfigValidator;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.config.impl.ConfigurationImpl#getIncludes <em>Includes</em>}</li>
- *   <li>{@link org.nasdanika.config.impl.ConfigurationImpl#getConfiguration <em>Configuration</em>}</li>
- *   <li>{@link org.nasdanika.config.impl.ConfigurationImpl#getDefaultIncludes <em>Default Includes</em>}</li>
  *   <li>{@link org.nasdanika.config.impl.ConfigurationImpl#getBaseURL <em>Base URL</em>}</li>
- *   <li>{@link org.nasdanika.config.impl.ConfigurationImpl#getClassPath <em>Class Path</em>}</li>
- *   <li>{@link org.nasdanika.config.impl.ConfigurationImpl#getInclude <em>Include</em>}</li>
  *   <li>{@link org.nasdanika.config.impl.ConfigurationImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.nasdanika.config.impl.ConfigurationImpl#getClassPath <em>Class Path</em>}</li>
+ *   <li>{@link org.nasdanika.config.impl.ConfigurationImpl#getIncludes <em>Includes</em>}</li>
+ *   <li>{@link org.nasdanika.config.impl.ConfigurationImpl#getDefaultIncludes <em>Default Includes</em>}</li>
+ *   <li>{@link org.nasdanika.config.impl.ConfigurationImpl#getConfiguration <em>Configuration</em>}</li>
+ *   <li>{@link org.nasdanika.config.impl.ConfigurationImpl#getInclude <em>Include</em>}</li>
  * </ul>
  *
  * @generated

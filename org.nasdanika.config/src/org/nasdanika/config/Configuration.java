@@ -16,21 +16,19 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * Container of configuration items - properties and services.
- * Generators extend configuration. Configuration can also be defined in a standalone model to be provided as input to generators.
- * 
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.config.Configuration#getIncludes <em>Includes</em>}</li>
- *   <li>{@link org.nasdanika.config.Configuration#getConfiguration <em>Configuration</em>}</li>
- *   <li>{@link org.nasdanika.config.Configuration#getDefaultIncludes <em>Default Includes</em>}</li>
  *   <li>{@link org.nasdanika.config.Configuration#getBaseURL <em>Base URL</em>}</li>
- *   <li>{@link org.nasdanika.config.Configuration#getClassPath <em>Class Path</em>}</li>
- *   <li>{@link org.nasdanika.config.Configuration#getInclude <em>Include</em>}</li>
  *   <li>{@link org.nasdanika.config.Configuration#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.nasdanika.config.Configuration#getClassPath <em>Class Path</em>}</li>
+ *   <li>{@link org.nasdanika.config.Configuration#getIncludes <em>Includes</em>}</li>
+ *   <li>{@link org.nasdanika.config.Configuration#getDefaultIncludes <em>Default Includes</em>}</li>
+ *   <li>{@link org.nasdanika.config.Configuration#getConfiguration <em>Configuration</em>}</li>
+ *   <li>{@link org.nasdanika.config.Configuration#getInclude <em>Include</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.config.ConfigPackage#getConfiguration()
@@ -209,7 +207,7 @@ public interface Configuration extends CDOObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Validates element for execution/generation. Adds messages to diagnostics and 
+	 * Validates element.
 	 * @param diagnostics Diagnostics to add validation messages to.
 	 * @param context Validation context.
 	 * <!-- end-model-doc -->

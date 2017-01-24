@@ -60,12 +60,12 @@ public class ConfigurationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addBaseURLPropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
+			addClassPathPropertyDescriptor(object);
 			addIncludesPropertyDescriptor(object);
 			addDefaultIncludesPropertyDescriptor(object);
-			addBaseURLPropertyDescriptor(object);
-			addClassPathPropertyDescriptor(object);
 			addIncludePropertyDescriptor(object);
-			addDescriptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -270,11 +270,11 @@ public class ConfigurationItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Configuration.class)) {
+			case ConfigPackage.CONFIGURATION__BASE_URL:
+			case ConfigPackage.CONFIGURATION__DESCRIPTION:
+			case ConfigPackage.CONFIGURATION__CLASS_PATH:
 			case ConfigPackage.CONFIGURATION__INCLUDES:
 			case ConfigPackage.CONFIGURATION__DEFAULT_INCLUDES:
-			case ConfigPackage.CONFIGURATION__BASE_URL:
-			case ConfigPackage.CONFIGURATION__CLASS_PATH:
-			case ConfigPackage.CONFIGURATION__DESCRIPTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ConfigPackage.CONFIGURATION__CONFIGURATION:

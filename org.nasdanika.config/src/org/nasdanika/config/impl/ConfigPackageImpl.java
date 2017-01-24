@@ -195,33 +195,6 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * @generated
 	 */
 	public EAttribute getConfiguration_Includes() {
-		return (EAttribute)configurationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getConfiguration_Configuration() {
-		return (EReference)configurationEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getConfiguration_DefaultIncludes() {
-		return (EAttribute)configurationEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getConfiguration_BaseURL() {
 		return (EAttribute)configurationEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -230,16 +203,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getConfiguration_ClassPath() {
-		return (EAttribute)configurationEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getConfiguration_Include() {
+	public EReference getConfiguration_Configuration() {
 		return (EReference)configurationEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -248,8 +212,44 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getConfiguration_DefaultIncludes() {
+		return (EAttribute)configurationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getConfiguration_BaseURL() {
+		return (EAttribute)configurationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getConfiguration_ClassPath() {
+		return (EAttribute)configurationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConfiguration_Include() {
+		return (EReference)configurationEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getConfiguration_Description() {
-		return (EAttribute)configurationEClass.getEStructuralFeatures().get(6);
+		return (EAttribute)configurationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -452,18 +452,24 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 
 		// Create classes and their features
 		configurationEClass = createEClass(CONFIGURATION);
-		createEAttribute(configurationEClass, CONFIGURATION__INCLUDES);
-		createEReference(configurationEClass, CONFIGURATION__CONFIGURATION);
-		createEAttribute(configurationEClass, CONFIGURATION__DEFAULT_INCLUDES);
 		createEAttribute(configurationEClass, CONFIGURATION__BASE_URL);
-		createEAttribute(configurationEClass, CONFIGURATION__CLASS_PATH);
-		createEReference(configurationEClass, CONFIGURATION__INCLUDE);
 		createEAttribute(configurationEClass, CONFIGURATION__DESCRIPTION);
+		createEAttribute(configurationEClass, CONFIGURATION__CLASS_PATH);
+		createEAttribute(configurationEClass, CONFIGURATION__INCLUDES);
+		createEAttribute(configurationEClass, CONFIGURATION__DEFAULT_INCLUDES);
+		createEReference(configurationEClass, CONFIGURATION__CONFIGURATION);
+		createEReference(configurationEClass, CONFIGURATION__INCLUDE);
 		createEOperation(configurationEClass, CONFIGURATION___CREATE_CONTEXT__CONTEXT_SUBMONITOR);
 		createEOperation(configurationEClass, CONFIGURATION___VALIDATE__DIAGNOSTICCHAIN_MAP);
 		createEOperation(configurationEClass, CONFIGURATION___GET_CONFIG_WORK_SIZE);
 
 		configurationItemEClass = createEClass(CONFIGURATION_ITEM);
+
+		valueConfigurationItemEClass = createEClass(VALUE_CONFIGURATION_ITEM);
+		createEAttribute(valueConfigurationItemEClass, VALUE_CONFIGURATION_ITEM__VALUE_TYPE);
+		createEAttribute(valueConfigurationItemEClass, VALUE_CONFIGURATION_ITEM__VALUES);
+		createEAttribute(valueConfigurationItemEClass, VALUE_CONFIGURATION_ITEM__DEFAULT);
+		createEAttribute(valueConfigurationItemEClass, VALUE_CONFIGURATION_ITEM__SCRIPTED);
 
 		serviceEClass = createEClass(SERVICE);
 		createEAttribute(serviceEClass, SERVICE__SERVICE_TYPE);
@@ -471,12 +477,6 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		propertyEClass = createEClass(PROPERTY);
 
 		providerEClass = createEClass(PROVIDER);
-
-		valueConfigurationItemEClass = createEClass(VALUE_CONFIGURATION_ITEM);
-		createEAttribute(valueConfigurationItemEClass, VALUE_CONFIGURATION_ITEM__VALUE_TYPE);
-		createEAttribute(valueConfigurationItemEClass, VALUE_CONFIGURATION_ITEM__VALUES);
-		createEAttribute(valueConfigurationItemEClass, VALUE_CONFIGURATION_ITEM__DEFAULT);
-		createEAttribute(valueConfigurationItemEClass, VALUE_CONFIGURATION_ITEM__SCRIPTED);
 
 		namedConfigurationItemEClass = createEClass(NAMED_CONFIGURATION_ITEM);
 		createEAttribute(namedConfigurationItemEClass, NAMED_CONFIGURATION_ITEM__NAME);
@@ -524,21 +524,21 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		EGenericType g2 = createEGenericType(ecorePackage.getEJavaObject());
 		g1.getETypeArguments().add(g2);
 		configurationItemEClass.getEGenericSuperTypes().add(g1);
+		valueConfigurationItemEClass.getESuperTypes().add(this.getConfigurationItem());
 		serviceEClass.getESuperTypes().add(this.getValueConfigurationItem());
 		propertyEClass.getESuperTypes().add(this.getValueConfigurationItem());
 		propertyEClass.getESuperTypes().add(this.getNamedConfigurationItem());
-		valueConfigurationItemEClass.getESuperTypes().add(this.getConfigurationItem());
 		namedConfigurationItemEClass.getESuperTypes().add(this.getConfigurationItem());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(configurationEClass, Configuration.class, "Configuration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getConfiguration_Includes(), ecorePackage.getEString(), "includes", null, 0, -1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConfiguration_Configuration(), this.getConfigurationItem(), null, "configuration", null, 0, -1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConfiguration_DefaultIncludes(), ecorePackage.getEString(), "defaultIncludes", null, 0, -1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConfiguration_BaseURL(), ecorePackage.getEString(), "baseURL", null, 0, 1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConfiguration_ClassPath(), ecorePackage.getEString(), "classPath", null, 0, -1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConfiguration_Include(), this.getConfiguration(), null, "include", null, 0, -1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConfiguration_Description(), ecorePackage.getEString(), "description", null, 0, 1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConfiguration_ClassPath(), ecorePackage.getEString(), "classPath", null, 0, -1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConfiguration_Includes(), ecorePackage.getEString(), "includes", null, 0, -1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConfiguration_DefaultIncludes(), ecorePackage.getEString(), "defaultIncludes", null, 0, -1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConfiguration_Configuration(), this.getConfigurationItem(), null, "configuration", null, 0, -1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConfiguration_Include(), this.getConfiguration(), null, "include", null, 0, -1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = initEOperation(getConfiguration__CreateContext__Context_SubMonitor(), this.getContext(), "createContext", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getContext(), "parent", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -558,18 +558,18 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 
 		initEClass(configurationItemEClass, ConfigurationItem.class, "ConfigurationItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(valueConfigurationItemEClass, ValueConfigurationItem.class, "ValueConfigurationItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getValueConfigurationItem_ValueType(), ecorePackage.getEString(), "valueType", null, 0, 1, ValueConfigurationItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getValueConfigurationItem_Values(), ecorePackage.getEString(), "values", null, 0, -1, ValueConfigurationItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getValueConfigurationItem_Default(), ecorePackage.getEBoolean(), "default", null, 0, 1, ValueConfigurationItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getValueConfigurationItem_Scripted(), ecorePackage.getEBoolean(), "scripted", null, 0, 1, ValueConfigurationItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(serviceEClass, Service.class, "Service", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getService_ServiceType(), ecorePackage.getEString(), "serviceType", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(providerEClass, Provider.class, "Provider", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(valueConfigurationItemEClass, ValueConfigurationItem.class, "ValueConfigurationItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getValueConfigurationItem_ValueType(), ecorePackage.getEString(), "valueType", null, 0, 1, ValueConfigurationItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getValueConfigurationItem_Values(), ecorePackage.getEString(), "values", null, 0, -1, ValueConfigurationItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getValueConfigurationItem_Default(), ecorePackage.getEBoolean(), "default", null, 0, 1, ValueConfigurationItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getValueConfigurationItem_Scripted(), ecorePackage.getEBoolean(), "scripted", null, 0, 1, ValueConfigurationItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namedConfigurationItemEClass, NamedConfigurationItem.class, "NamedConfigurationItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedConfigurationItem_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedConfigurationItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -586,6 +586,8 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		// Create annotations
 		// http://www.eclipse.org/emf/2002/GenModel
 		createGenModelAnnotations();
+		// org.nasdanika.ui.java-class
+		createOrgAnnotations();
 	}
 
 	/**
@@ -600,13 +602,13 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		  (this, 
 		   source, 
 		   new String[] {
-			 "documentation", "Code generation model."
+			 "documentation", "Configuration model."
 		   });	
 		addAnnotation
 		  (configurationEClass, 
 		   source, 
 		   new String[] {
-			 "documentation", "Container of configuration items - properties and services.\r\nGenerators extend configuration. Configuration can also be defined in a standalone model to be provided as input to generators.\r\n"
+			 "documentation", "Container of configuration items - properties and services."
 		   });	
 		addAnnotation
 		  (getConfiguration__CreateContext__Context_SubMonitor(), 
@@ -624,7 +626,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		  (getConfiguration__Validate__DiagnosticChain_Map(), 
 		   source, 
 		   new String[] {
-			 "documentation", "Validates element for execution/generation. Adds messages to diagnostics and "
+			 "documentation", "Validates element."
 		   });	
 		addAnnotation
 		  ((getConfiguration__Validate__DiagnosticChain_Map()).getEParameters().get(0), 
@@ -639,40 +641,10 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 			 "documentation", "Validation context."
 		   });	
 		addAnnotation
-		  (getConfiguration_Includes(), 
-		   source, 
-		   new String[] {
-			 "documentation", "URL\'s of configuration files to load into the this configurable\'s context.\r\nURL\'s are resolved relative to the ``baseURL``, which in turn is resolved relative to the model resource. \r\n\r\nThe following custom schemes supported:\r\n\r\n* ``bundle`` - ``bundle:<bundle symbolic name>/<resource path in the bundle>``\r\n* ``java`` - ``java:<classloader path>``\r\n\r\nConfiguration files can be in the following formats:\r\n\r\n* XMI model - ``.xml`` or ``.nsdgen`` extension.\r\n* Properties file - ``.properties`` extension.\r\n* JSON file following the structure of the configuration model - ``.json`` extension.\r\n* YAML file following the structure of the configuration model - ``.yml`` extension.\r\n\r\nIf XML/JSON/YAML contains configuration definition, then its ``createContext()`` method is invoked in sequence\r\nto create a chain of contexts. If property or service is contained in the definition, it gets mounted to a context created by this configuration."
-		   });	
-		addAnnotation
-		  (getConfiguration_Configuration(), 
-		   source, 
-		   new String[] {
-			 "documentation", "Configuration items - properties and services."
-		   });	
-		addAnnotation
-		  (getConfiguration_DefaultIncludes(), 
-		   source, 
-		   new String[] {
-			 "documentation", "Same as ``includes``, but default includes are used only if the parent context doesn\'t contain configuration items with requested keys (names or types)."
-		   });	
-		addAnnotation
 		  (getConfiguration_BaseURL(), 
 		   source, 
 		   new String[] {
 			 "documentation", "Base URL to resolve includes, default includes, and classpath entries. \r\nThe URL is resolved relative to the model location and defaults to the model location URL."
-		   });	
-		addAnnotation
-		  (getConfiguration_ClassPath(), 
-		   source, 
-		   new String[] {
-			 "documentation", "Class path for loading classes of configuration elements."
-		   });	
-		addAnnotation
-		  (getConfiguration_Include(), 
-		   source, 
-		   new String[] {
-			 "documentation", "Configurations defined elsewhere to be included into this configuration. \r\nConfigurations get chained and configuration items (properties and services) get\r\nmounted to the context created by this configuration."
 		   });	
 		addAnnotation
 		  (getConfiguration_Description(), 
@@ -681,40 +653,40 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 			 "documentation", "Optional description."
 		   });	
 		addAnnotation
+		  (getConfiguration_ClassPath(), 
+		   source, 
+		   new String[] {
+			 "documentation", "Class path for loading classes of configuration elements."
+		   });	
+		addAnnotation
+		  (getConfiguration_Includes(), 
+		   source, 
+		   new String[] {
+			 "documentation", "URL\'s of configuration files to load into the this configurable\'s context.\r\nURL\'s are resolved relative to the ``baseURL``, which in turn is resolved relative to the model resource. \r\n\r\nThe following custom schemes supported:\r\n\r\n* ``bundle`` - ``bundle:<bundle symbolic name>/<resource path in the bundle>``\r\n* ``java`` - ``java:<classloader path>``\r\n\r\nConfiguration files can be in the following formats:\r\n\r\n* XMI model - ``.xml`` or ``.nsdgen`` extension.\r\n* Properties file - ``.properties`` extension.\r\n* JSON file following the structure of the configuration model - ``.json`` extension.\r\n* YAML file following the structure of the configuration model - ``.yml`` extension.\r\n\r\nIf XML/JSON/YAML contains configuration definition, then its ``createContext()`` method is invoked in sequence\r\nto create a chain of contexts. If property or service is contained in the definition, it gets mounted to a context created by this configuration."
+		   });	
+		addAnnotation
+		  (getConfiguration_DefaultIncludes(), 
+		   source, 
+		   new String[] {
+			 "documentation", "Same as ``includes``, but default includes are used only if the parent context doesn\'t contain configuration items with requested keys (names or types)."
+		   });	
+		addAnnotation
+		  (getConfiguration_Configuration(), 
+		   source, 
+		   new String[] {
+			 "documentation", "Configuration items - properties and services."
+		   });	
+		addAnnotation
+		  (getConfiguration_Include(), 
+		   source, 
+		   new String[] {
+			 "documentation", "Configurations defined elsewhere to be included into this configuration. \r\nConfigurations get chained and configuration items (properties and services) get\r\nmounted to the context created by this configuration."
+		   });	
+		addAnnotation
 		  (configurationItemEClass, 
 		   source, 
 		   new String[] {
 			 "documentation", "Configuration item contributes to the context of Configurable and can itself be configurable.\r\n"
-		   });	
-		addAnnotation
-		  (serviceEClass, 
-		   source, 
-		   new String[] {
-			 "documentation", "Service is a configuration item keyed by its type or one of types it implements/extends.\r\n"
-		   });	
-		addAnnotation
-		  (getService_ServiceType(), 
-		   source, 
-		   new String[] {
-			 "documentation", "Service type. Shall be a superclass or implemented interface of the value type.\r\nDefaults to value type."
-		   });	
-		addAnnotation
-		  (propertyEClass, 
-		   source, 
-		   new String[] {
-			 "documentation", "Property is a valued configuration item keyed by a String."
-		   });	
-		addAnnotation
-		  (contextEDataType, 
-		   source, 
-		   new String[] {
-			 "documentation", "Context provides access to properties and services. Contexts are typically chained\r\nwith a child context \"inheriting\" properties and services of the parent context(s)."
-		   });	
-		addAnnotation
-		  (providerEClass, 
-		   source, 
-		   new String[] {
-			 "documentation", "Providers are used to create configuration items using given context."
 		   });	
 		addAnnotation
 		  (valueConfigurationItemEClass, 
@@ -747,6 +719,36 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 			 "documentation", "If true, value is treated as script and evaluated to compute actual value. \r\n"
 		   });	
 		addAnnotation
+		  (serviceEClass, 
+		   source, 
+		   new String[] {
+			 "documentation", "Service is a configuration item keyed by its type or one of types it implements/extends.\r\n"
+		   });	
+		addAnnotation
+		  (getService_ServiceType(), 
+		   source, 
+		   new String[] {
+			 "documentation", "Service type. Shall be a superclass or implemented interface of the value type.\r\nDefaults to value type."
+		   });	
+		addAnnotation
+		  (propertyEClass, 
+		   source, 
+		   new String[] {
+			 "documentation", "Property is a valued configuration item keyed by a String."
+		   });	
+		addAnnotation
+		  (contextEDataType, 
+		   source, 
+		   new String[] {
+			 "documentation", "Context provides access to properties and services. Contexts are typically chained\r\nwith a child context \"inheriting\" properties and services of the parent context(s)."
+		   });	
+		addAnnotation
+		  (providerEClass, 
+		   source, 
+		   new String[] {
+			 "documentation", "Providers are used to create configuration items using given context."
+		   });	
+		addAnnotation
 		  (namedConfigurationItemEClass, 
 		   source, 
 		   new String[] {
@@ -757,6 +759,26 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		   source, 
 		   new String[] {
 			 "documentation", "Property name."
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>org.nasdanika.ui.java-class</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createOrgAnnotations() {
+		String source = "org.nasdanika.ui.java-class";	
+		addAnnotation
+		  (getValueConfigurationItem_ValueType(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getService_ServiceType(), 
+		   source, 
+		   new String[] {
 		   });
 	}
 

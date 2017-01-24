@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EReference;
  * </ul>
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * Code generation model.
+ * Configuration model.
  * <!-- end-model-doc -->
  * @see org.nasdanika.config.ConfigFactory
  * @model kind="package"
@@ -72,58 +72,13 @@ public interface ConfigPackage extends EPackage {
 	int CONFIGURATION = 0;
 
 	/**
-	 * The feature id for the '<em><b>Includes</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONFIGURATION__INCLUDES = 0;
-
-	/**
-	 * The feature id for the '<em><b>Configuration</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONFIGURATION__CONFIGURATION = 1;
-
-	/**
-	 * The feature id for the '<em><b>Default Includes</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONFIGURATION__DEFAULT_INCLUDES = 2;
-
-	/**
 	 * The feature id for the '<em><b>Base URL</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATION__BASE_URL = 3;
-
-	/**
-	 * The feature id for the '<em><b>Class Path</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONFIGURATION__CLASS_PATH = 4;
-
-	/**
-	 * The feature id for the '<em><b>Include</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONFIGURATION__INCLUDE = 5;
+	int CONFIGURATION__BASE_URL = 0;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -132,7 +87,52 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATION__DESCRIPTION = 6;
+	int CONFIGURATION__DESCRIPTION = 1;
+
+	/**
+	 * The feature id for the '<em><b>Class Path</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION__CLASS_PATH = 2;
+
+	/**
+	 * The feature id for the '<em><b>Includes</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION__INCLUDES = 3;
+
+	/**
+	 * The feature id for the '<em><b>Default Includes</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION__DEFAULT_INCLUDES = 4;
+
+	/**
+	 * The feature id for the '<em><b>Configuration</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION__CONFIGURATION = 5;
+
+	/**
+	 * The feature id for the '<em><b>Include</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION__INCLUDE = 6;
 
 	/**
 	 * The number of structural features of the '<em>Configuration</em>' class.
@@ -190,33 +190,6 @@ public interface ConfigPackage extends EPackage {
 	int CONFIGURATION_ITEM = 1;
 
 	/**
-	 * The feature id for the '<em><b>Includes</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONFIGURATION_ITEM__INCLUDES = CONFIGURATION__INCLUDES;
-
-	/**
-	 * The feature id for the '<em><b>Configuration</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONFIGURATION_ITEM__CONFIGURATION = CONFIGURATION__CONFIGURATION;
-
-	/**
-	 * The feature id for the '<em><b>Default Includes</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONFIGURATION_ITEM__DEFAULT_INCLUDES = CONFIGURATION__DEFAULT_INCLUDES;
-
-	/**
 	 * The feature id for the '<em><b>Base URL</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -224,6 +197,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONFIGURATION_ITEM__BASE_URL = CONFIGURATION__BASE_URL;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION_ITEM__DESCRIPTION = CONFIGURATION__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Class Path</b></em>' attribute list.
@@ -235,6 +217,33 @@ public interface ConfigPackage extends EPackage {
 	int CONFIGURATION_ITEM__CLASS_PATH = CONFIGURATION__CLASS_PATH;
 
 	/**
+	 * The feature id for the '<em><b>Includes</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION_ITEM__INCLUDES = CONFIGURATION__INCLUDES;
+
+	/**
+	 * The feature id for the '<em><b>Default Includes</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION_ITEM__DEFAULT_INCLUDES = CONFIGURATION__DEFAULT_INCLUDES;
+
+	/**
+	 * The feature id for the '<em><b>Configuration</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION_ITEM__CONFIGURATION = CONFIGURATION__CONFIGURATION;
+
+	/**
 	 * The feature id for the '<em><b>Include</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -242,15 +251,6 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONFIGURATION_ITEM__INCLUDE = CONFIGURATION__INCLUDE;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONFIGURATION_ITEM__DESCRIPTION = CONFIGURATION__DESCRIPTION;
 
 	/**
 	 * The number of structural features of the '<em>Configuration Item</em>' class.
@@ -305,34 +305,7 @@ public interface ConfigPackage extends EPackage {
 	 * @see org.nasdanika.config.impl.ConfigPackageImpl#getValueConfigurationItem()
 	 * @generated
 	 */
-	int VALUE_CONFIGURATION_ITEM = 5;
-
-	/**
-	 * The feature id for the '<em><b>Includes</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_CONFIGURATION_ITEM__INCLUDES = CONFIGURATION_ITEM__INCLUDES;
-
-	/**
-	 * The feature id for the '<em><b>Configuration</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_CONFIGURATION_ITEM__CONFIGURATION = CONFIGURATION_ITEM__CONFIGURATION;
-
-	/**
-	 * The feature id for the '<em><b>Default Includes</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_CONFIGURATION_ITEM__DEFAULT_INCLUDES = CONFIGURATION_ITEM__DEFAULT_INCLUDES;
+	int VALUE_CONFIGURATION_ITEM = 2;
 
 	/**
 	 * The feature id for the '<em><b>Base URL</b></em>' attribute.
@@ -344,6 +317,15 @@ public interface ConfigPackage extends EPackage {
 	int VALUE_CONFIGURATION_ITEM__BASE_URL = CONFIGURATION_ITEM__BASE_URL;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_CONFIGURATION_ITEM__DESCRIPTION = CONFIGURATION_ITEM__DESCRIPTION;
+
+	/**
 	 * The feature id for the '<em><b>Class Path</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -353,6 +335,33 @@ public interface ConfigPackage extends EPackage {
 	int VALUE_CONFIGURATION_ITEM__CLASS_PATH = CONFIGURATION_ITEM__CLASS_PATH;
 
 	/**
+	 * The feature id for the '<em><b>Includes</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_CONFIGURATION_ITEM__INCLUDES = CONFIGURATION_ITEM__INCLUDES;
+
+	/**
+	 * The feature id for the '<em><b>Default Includes</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_CONFIGURATION_ITEM__DEFAULT_INCLUDES = CONFIGURATION_ITEM__DEFAULT_INCLUDES;
+
+	/**
+	 * The feature id for the '<em><b>Configuration</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_CONFIGURATION_ITEM__CONFIGURATION = CONFIGURATION_ITEM__CONFIGURATION;
+
+	/**
 	 * The feature id for the '<em><b>Include</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -360,15 +369,6 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int VALUE_CONFIGURATION_ITEM__INCLUDE = CONFIGURATION_ITEM__INCLUDE;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_CONFIGURATION_ITEM__DESCRIPTION = CONFIGURATION_ITEM__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Value Type</b></em>' attribute.
@@ -459,34 +459,7 @@ public interface ConfigPackage extends EPackage {
 	 * @see org.nasdanika.config.impl.ConfigPackageImpl#getService()
 	 * @generated
 	 */
-	int SERVICE = 2;
-
-	/**
-	 * The feature id for the '<em><b>Includes</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE__INCLUDES = VALUE_CONFIGURATION_ITEM__INCLUDES;
-
-	/**
-	 * The feature id for the '<em><b>Configuration</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE__CONFIGURATION = VALUE_CONFIGURATION_ITEM__CONFIGURATION;
-
-	/**
-	 * The feature id for the '<em><b>Default Includes</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE__DEFAULT_INCLUDES = VALUE_CONFIGURATION_ITEM__DEFAULT_INCLUDES;
+	int SERVICE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Base URL</b></em>' attribute.
@@ -498,6 +471,15 @@ public interface ConfigPackage extends EPackage {
 	int SERVICE__BASE_URL = VALUE_CONFIGURATION_ITEM__BASE_URL;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__DESCRIPTION = VALUE_CONFIGURATION_ITEM__DESCRIPTION;
+
+	/**
 	 * The feature id for the '<em><b>Class Path</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -507,6 +489,33 @@ public interface ConfigPackage extends EPackage {
 	int SERVICE__CLASS_PATH = VALUE_CONFIGURATION_ITEM__CLASS_PATH;
 
 	/**
+	 * The feature id for the '<em><b>Includes</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__INCLUDES = VALUE_CONFIGURATION_ITEM__INCLUDES;
+
+	/**
+	 * The feature id for the '<em><b>Default Includes</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__DEFAULT_INCLUDES = VALUE_CONFIGURATION_ITEM__DEFAULT_INCLUDES;
+
+	/**
+	 * The feature id for the '<em><b>Configuration</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__CONFIGURATION = VALUE_CONFIGURATION_ITEM__CONFIGURATION;
+
+	/**
 	 * The feature id for the '<em><b>Include</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -514,15 +523,6 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVICE__INCLUDE = VALUE_CONFIGURATION_ITEM__INCLUDE;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE__DESCRIPTION = VALUE_CONFIGURATION_ITEM__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Value Type</b></em>' attribute.
@@ -622,34 +622,7 @@ public interface ConfigPackage extends EPackage {
 	 * @see org.nasdanika.config.impl.ConfigPackageImpl#getProperty()
 	 * @generated
 	 */
-	int PROPERTY = 3;
-
-	/**
-	 * The feature id for the '<em><b>Includes</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY__INCLUDES = VALUE_CONFIGURATION_ITEM__INCLUDES;
-
-	/**
-	 * The feature id for the '<em><b>Configuration</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY__CONFIGURATION = VALUE_CONFIGURATION_ITEM__CONFIGURATION;
-
-	/**
-	 * The feature id for the '<em><b>Default Includes</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY__DEFAULT_INCLUDES = VALUE_CONFIGURATION_ITEM__DEFAULT_INCLUDES;
+	int PROPERTY = 4;
 
 	/**
 	 * The feature id for the '<em><b>Base URL</b></em>' attribute.
@@ -661,6 +634,15 @@ public interface ConfigPackage extends EPackage {
 	int PROPERTY__BASE_URL = VALUE_CONFIGURATION_ITEM__BASE_URL;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__DESCRIPTION = VALUE_CONFIGURATION_ITEM__DESCRIPTION;
+
+	/**
 	 * The feature id for the '<em><b>Class Path</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -670,6 +652,33 @@ public interface ConfigPackage extends EPackage {
 	int PROPERTY__CLASS_PATH = VALUE_CONFIGURATION_ITEM__CLASS_PATH;
 
 	/**
+	 * The feature id for the '<em><b>Includes</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__INCLUDES = VALUE_CONFIGURATION_ITEM__INCLUDES;
+
+	/**
+	 * The feature id for the '<em><b>Default Includes</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__DEFAULT_INCLUDES = VALUE_CONFIGURATION_ITEM__DEFAULT_INCLUDES;
+
+	/**
+	 * The feature id for the '<em><b>Configuration</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__CONFIGURATION = VALUE_CONFIGURATION_ITEM__CONFIGURATION;
+
+	/**
 	 * The feature id for the '<em><b>Include</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -677,15 +686,6 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROPERTY__INCLUDE = VALUE_CONFIGURATION_ITEM__INCLUDE;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY__DESCRIPTION = VALUE_CONFIGURATION_ITEM__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Value Type</b></em>' attribute.
@@ -785,7 +785,7 @@ public interface ConfigPackage extends EPackage {
 	 * @see org.nasdanika.config.impl.ConfigPackageImpl#getProvider()
 	 * @generated
 	 */
-	int PROVIDER = 4;
+	int PROVIDER = 5;
 
 	/**
 	 * The number of structural features of the '<em>Provider</em>' class.
@@ -816,33 +816,6 @@ public interface ConfigPackage extends EPackage {
 	int NAMED_CONFIGURATION_ITEM = 6;
 
 	/**
-	 * The feature id for the '<em><b>Includes</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_CONFIGURATION_ITEM__INCLUDES = CONFIGURATION_ITEM__INCLUDES;
-
-	/**
-	 * The feature id for the '<em><b>Configuration</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_CONFIGURATION_ITEM__CONFIGURATION = CONFIGURATION_ITEM__CONFIGURATION;
-
-	/**
-	 * The feature id for the '<em><b>Default Includes</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_CONFIGURATION_ITEM__DEFAULT_INCLUDES = CONFIGURATION_ITEM__DEFAULT_INCLUDES;
-
-	/**
 	 * The feature id for the '<em><b>Base URL</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -850,6 +823,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int NAMED_CONFIGURATION_ITEM__BASE_URL = CONFIGURATION_ITEM__BASE_URL;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_CONFIGURATION_ITEM__DESCRIPTION = CONFIGURATION_ITEM__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Class Path</b></em>' attribute list.
@@ -861,6 +843,33 @@ public interface ConfigPackage extends EPackage {
 	int NAMED_CONFIGURATION_ITEM__CLASS_PATH = CONFIGURATION_ITEM__CLASS_PATH;
 
 	/**
+	 * The feature id for the '<em><b>Includes</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_CONFIGURATION_ITEM__INCLUDES = CONFIGURATION_ITEM__INCLUDES;
+
+	/**
+	 * The feature id for the '<em><b>Default Includes</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_CONFIGURATION_ITEM__DEFAULT_INCLUDES = CONFIGURATION_ITEM__DEFAULT_INCLUDES;
+
+	/**
+	 * The feature id for the '<em><b>Configuration</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_CONFIGURATION_ITEM__CONFIGURATION = CONFIGURATION_ITEM__CONFIGURATION;
+
+	/**
 	 * The feature id for the '<em><b>Include</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -868,15 +877,6 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int NAMED_CONFIGURATION_ITEM__INCLUDE = CONFIGURATION_ITEM__INCLUDE;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_CONFIGURATION_ITEM__DESCRIPTION = CONFIGURATION_ITEM__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
