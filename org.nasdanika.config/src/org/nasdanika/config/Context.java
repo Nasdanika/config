@@ -46,9 +46,10 @@ public interface Context { // TODO - Autocloseable
 	/**
 	 * Expands tokens in the form of <code>{{token name[|default value]}}</code> to their values.
 	 * If a token is not found expansion is not processed.
-	 * @param strInput
-	 * @param env
-	 * @return
+	 * If a token has a form <code>{{token source key:token name[|default value]}} and property under token source key is an instance of {@link TokenSource}, then
+	 * the token source is invoked to produce value. See TokenSource JavaDoc for details.
+	 * @param input Input object. Input streams, readers and URL's a read to produce strings.
+	 * @return Interpolated object string.
 	 */
 	default String interpolate(Object input) throws IOException {
 		if (input == null) {
@@ -63,12 +64,23 @@ public interface Context { // TODO - Autocloseable
 			String bareToken = token.substring(2, token.length()-2);
 			int pipeIdx = bareToken.indexOf('|');
 			String key = pipeIdx == -1 ? bareToken : bareToken.substring(0, pipeIdx);
-			Object replacement = get(key);
+			int colonIdx = key.indexOf(":");
+			Object replacement; 
+			if (colonIdx == -1) {
+				replacement = get(key);
+			} else {
+				Object val = get(key.substring(0, colonIdx));
+				if (val instanceof TokenSource) {
+					replacement = ((TokenSource) val).getToken(this, key.substring(colonIdx+1));
+				} else {
+					replacement = get(key);
+				}
+			}
 			if (replacement == null && pipeIdx != -1) {
 				replacement = bareToken.substring(pipeIdx+1);
 			}
 		    if (replacement != null) {
-			    output.append(strInput.substring(i, matcher.start())).append(replacement);			    
+			    output.append(strInput.substring(i, matcher.start())).append(stringify(replacement));			    
 			    i = matcher.end();
 		    }
 		}
