@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringWriter;
 import java.net.URL;
+import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -46,11 +47,13 @@ public interface Context { // TODO - Autocloseable
 	/**
 	 * Expands tokens in the form of <code>{{token name[|default value]}}</code> to their values.
 	 * If a token is not found expansion is not processed.
-	 * If a token has a form <code>{{token source key:token name[|default value]}} and property under token source key is an instance of {@link TokenSource}, then
-	 * the token source is invoked to produce value. See TokenSource JavaDoc for details.
+	 * If a token has a form <code>{{token source key:token name[|default value]}} and the property value for the token source key is an instance of {@link TokenSource}, then
+	 * the token source is invoked to produce value. See TokenSource JavaDoc for details. Similarly, to the above, if the value is {@link Function}, then its <code>apply()</code> method
+	 * is invoked with the token name argument.
 	 * @param input Input object. Input streams, readers and URL's a read to produce strings.
 	 * @return Interpolated object string.
 	 */
+	@SuppressWarnings("unchecked")
 	default String interpolate(Object input) throws IOException {
 		if (input == null) {
 			return null;
@@ -72,6 +75,8 @@ public interface Context { // TODO - Autocloseable
 				Object val = get(key.substring(0, colonIdx));
 				if (val instanceof TokenSource) {
 					replacement = ((TokenSource) val).getToken(this, key.substring(colonIdx+1));
+				} else if (val instanceof Function) {
+					replacement = ((Function<String, Object>) val).apply(key.substring(colonIdx+1));
 				} else {
 					replacement = get(key);
 				}

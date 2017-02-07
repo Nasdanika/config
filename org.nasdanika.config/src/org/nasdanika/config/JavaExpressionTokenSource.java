@@ -10,17 +10,17 @@ import org.codehaus.janino.ExpressionEvaluator;
 public class JavaExpressionTokenSource implements TokenSource {
 
 	@Override
-	public Object getToken(Context context, String name) {
+	public Object getToken(Context context, String key) {
 		try {
 			ExpressionEvaluator evaluator = new ExpressionEvaluator();
 			evaluator.setParentClassLoader(context.getClassLoader());
 			evaluator.setParameters(new String[] { "context" }, new Class<?>[] { Context.class });
 			evaluator.setExpressionType(Object.class);
 			evaluator.setThrownExceptions(new Class[] { Exception.class });
-			evaluator.cook(name);
+			evaluator.cook(key);
 			return evaluator.evaluate(new Object[] { context });
 		} catch (Exception e) {
-			throw new IllegalArgumentException("Could not evaluate '"+name, e);
+			throw new IllegalArgumentException("Could not evaluate '"+key, e);
 		}
 	}
 
