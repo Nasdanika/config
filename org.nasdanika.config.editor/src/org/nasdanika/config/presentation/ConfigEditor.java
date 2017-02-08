@@ -121,6 +121,8 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.nasdanika.config.provider.ConfigItemProviderAdapterFactory;
+import org.nasdanika.presentation.MasterDetailForm;
+import org.nasdanika.presentation.MasterDetailViewer;
 
 
 /**
@@ -996,7 +998,7 @@ public class ConfigEditor
 						new ViewerPane(getSite().getPage(), ConfigEditor.this) {
 							@Override
 							public Viewer createViewer(Composite composite) {
-								MasterDetailForm masterDetailForm = new MasterDetailForm(composite, SWT.NONE);
+								MasterDetailForm masterDetailForm = new MasterDetailForm(composite, SWT.NONE, editingDomain);
 								return new MasterDetailViewer(masterDetailForm);
 							}
 							@Override
