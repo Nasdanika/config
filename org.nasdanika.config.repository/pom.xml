@@ -130,7 +130,7 @@
 	<distributionManagement>
 		<site>
 			<id>nasdanika-org</id>
-			<url>ftp://${env.FTP_SERVER}/docgen-ecore</url>
+			<url>ftp://${env.FTP_SERVER}/config</url>
 		</site>
 	</distributionManagement>	
 
