@@ -1,0 +1,1070 @@
+
+<script>document.title="EClass ValueConfigurationItem";</script>
+<h2>
+<img src="resources/images/EClass.gif" style="margin-right:5px"/><I>ValueConfigurationItem</I></h2>
+<div style="margin-bottom:5px;font-family:monospace">org.nasdanika.config.ValueConfigurationItem</div>
+<div>
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a href="#nsd_2b_tab_0" data-toggle="tab">Documentation</a>
+    </li>
+    <li>
+      <a href="#nsd_2b_tab_1" data-toggle="tab">Diagram</a>
+    </li>
+    <li>
+      <a href="#nsd_2b_tab_2" data-toggle="tab">
+<img src="resources/images/EAttribute.gif" style="margin-right:5px"/> Attributes</a>
+    </li>
+    <li>
+      <a href="#nsd_2b_tab_3" data-toggle="tab">
+<img src="resources/images/EReference.gif" style="margin-right:5px"/> References</a>
+    </li>
+    <li>
+      <a href="#nsd_2b_tab_4" data-toggle="tab">
+<img src="resources/images/EOperation.gif" style="margin-right:5px"/> Operations</a>
+    </li>
+    <li>
+      <a href="#nsd_2b_tab_5" data-toggle="tab">Supertypes</a>
+    </li>
+    <li>
+      <a href="#nsd_2b_tab_6" data-toggle="tab">Subtypes</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div id="nsd_2b_tab_0" class="tab-pane active">
+      <div style="margin-top:10px;margin-bottom:10px" class="markdown-body"><p>Value configuration items can be configured with value in addition to configuration elements.</p>
+<p>If <code>scripted</code> is true, the value is evaluated as a script.</p>
+<p>Script is a Java method body returning Object and taking <code>Context contect, String valueType</code> paramters:</p>
+<pre><code class="java">Object evaluate(Context context, String valueType) throws Exception {
+    // --- Script here ---
+}
+</code></pre>
+<p>Otherwise, value and configuration items are injected into the configuration item via constructor. An appropriate constructor is selected based on whether the value is blank and configuration items are present:</p>
+<ul>
+  <li>Empty values collection - single value object is instantiated with:</li>
+  <li>No configuration items - default constructor or a constructor which takes Context.</li>
+  <li>Configuration items - a constructor which takes Context.</li>
+  <li>Non-empty values collection:</li>
+  <li>No configuration items - a constructor which takes String. If value is blank then the default constructor will be considered first, if exists.</li>
+  <li>Configuration items - a constructor which takes String and Context in any order. If value is blank then a constructor which takes Context will be considered first.</li>
+</ul>
+<p>If configuration item&rsquo;s type is assignable from <code>org.nasdanika.config.Provider</code>, then it gets instantiated using either the default constructor, if it exists and value is blank, or a constructor which takes String. The provider&rsquo;s <code>get(Context)</code> method is used to obtain actual configuration item.</p>
+<p>If value is not blank, it is interpolated using properties already defined in the context and inherited from the parent context. Interpolation is the process of expanding tokens enclosed into double-curly brackets to the values of properties with corresponding names.</p>
+<p>If a property with a given name is not defined, a token does not get expanded.</p>
+<p>Example:</p>
+<pre><code>{{base-package}}.impl
+</code></pre>
+<p>If values size is greater than one, then value is an array with elments of <code>valueType</code>. As such multi-value services are keyed by <code>valueType[]</code> as opposed to <code>valueType</code> for single-value or no value services.</p></div></div>
+    <div id="nsd_2b_tab_1" class="tab-pane">
+      <img src="75726e3a6f72672e6e617364616e696b612e636f6e666967/ValueConfigurationItem.png"/>
+    </div>
+    <div id="nsd_2b_tab_2" class="tab-pane">
+      <div id="nsd_2c_accordion" role="tablist" class="panel-group">
+        <div class="panel panel-default">
+          <div role="tab" id="nsd_2d_collapse_heading" class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#nsd_2c_accordion" href="#nsd_2d_collapse_collapse" aria-expanded="false" aria-controls="nsd_2d_collapse_collapse"><b>baseURL</b> : EString (Configuration)  - <I>Base URL to resolve includes, default includes, and classpath entries. </I></a>
+            </h4>
+          </div>
+          <div id="nsd_2d_collapse_collapse" class="panel-collapse collapse">
+            <div id="nsd_2d_collapse_panel_body" class="panel-body"><p>Base URL to resolve includes, default includes, and classpath entries. The URL is resolved relative to the model location and defaults to the model location URL.</p>
+              <table class="table table-bordered">
+                <tr>
+                  <th style="align:left">Declaring Type</th>
+                  <td>
+<a href="#router/doc-content/75726e3a6f72672e6e617364616e696b612e636f6e666967/Configuration.html">
+<img src="resources/images/EClass.gif" style="margin-right:5px"/>Configuration</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Type</th>
+                  <td>
+<a href="#router/doc-content/687474703a2f2f7777772e65636c697073652e6f72672f656d662f323030322f45636f7265/EString.html">
+<img src="resources/images/EDataType.gif" style="margin-right:5px"/>EString</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Cardinality</th>
+                  <td>0..1</td>
+                </tr>
+                <tr>
+                  <th style="align:left">Default value</th>
+                  <td>
+                    <div style="white-space:pre;font-family:monospace"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Changeable</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Derived</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">ID</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Ordered</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Transient</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unique</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unsettable</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Volatile</th>
+                  <td></td>
+                </tr>
+              </table></div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div role="tab" id="nsd_2e_collapse_heading" class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#nsd_2c_accordion" href="#nsd_2e_collapse_collapse" aria-expanded="false" aria-controls="nsd_2e_collapse_collapse"><b>classPath</b> : EString (Configuration)  - <I>Class path for loading classes of configuration elements.</I></a>
+            </h4>
+          </div>
+          <div id="nsd_2e_collapse_collapse" class="panel-collapse collapse">
+            <div id="nsd_2e_collapse_panel_body" class="panel-body"><p>Class path for loading classes of configuration elements.</p>
+              <table class="table table-bordered">
+                <tr>
+                  <th style="align:left">Declaring Type</th>
+                  <td>
+<a href="#router/doc-content/75726e3a6f72672e6e617364616e696b612e636f6e666967/Configuration.html">
+<img src="resources/images/EClass.gif" style="margin-right:5px"/>Configuration</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Type</th>
+                  <td>
+<a href="#router/doc-content/687474703a2f2f7777772e65636c697073652e6f72672f656d662f323030322f45636f7265/EString.html">
+<img src="resources/images/EDataType.gif" style="margin-right:5px"/>EString</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Cardinality</th>
+                  <td>*</td>
+                </tr>
+                <tr>
+                  <th style="align:left">Default value</th>
+                  <td>
+                    <div style="white-space:pre;font-family:monospace"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Changeable</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Derived</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">ID</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Ordered</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Transient</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unique</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unsettable</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Volatile</th>
+                  <td></td>
+                </tr>
+              </table></div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div role="tab" id="nsd_2f_collapse_heading" class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#nsd_2c_accordion" href="#nsd_2f_collapse_collapse" aria-expanded="false" aria-controls="nsd_2f_collapse_collapse"><b>default</b> : EBoolean - <I>Regular configuration shadow/override configuration items defined in parent context(s), default configuration items, on the contrary, get shadowed by parent’s configuration items with the same keys.</I></a>
+            </h4>
+          </div>
+          <div id="nsd_2f_collapse_collapse" class="panel-collapse collapse">
+            <div id="nsd_2f_collapse_panel_body" class="panel-body"><p>Regular configuration shadow/override configuration items defined in parent context(s), default configuration items, on the contrary, get shadowed by parent&rsquo;s configuration items with the same keys.</p>
+              <table class="table table-bordered">
+                <tr>
+                  <th style="align:left">Type</th>
+                  <td>
+<a href="#router/doc-content/687474703a2f2f7777772e65636c697073652e6f72672f656d662f323030322f45636f7265/EBoolean.html">
+<img src="resources/images/EDataType.gif" style="margin-right:5px"/>EBoolean</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Cardinality</th>
+                  <td>0..1</td>
+                </tr>
+                <tr>
+                  <th style="align:left">Default value</th>
+                  <td>
+                    <div style="white-space:pre;font-family:monospace"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Changeable</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Derived</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">ID</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Ordered</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Transient</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unique</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unsettable</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Volatile</th>
+                  <td></td>
+                </tr>
+              </table></div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div role="tab" id="nsd_2g_collapse_heading" class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#nsd_2c_accordion" href="#nsd_2g_collapse_collapse" aria-expanded="false" aria-controls="nsd_2g_collapse_collapse"><b>defaultIncludes</b> : EString (Configuration)  - <I>Same as includes, but default includes are used only if the parent context doesn’t contain configuration items with requested keys (names or types).</I></a>
+            </h4>
+          </div>
+          <div id="nsd_2g_collapse_collapse" class="panel-collapse collapse">
+            <div id="nsd_2g_collapse_panel_body" class="panel-body"><p>Same as <code>includes</code>, but default includes are used only if the parent context doesn&rsquo;t contain configuration items with requested keys (names or types).</p>
+              <table class="table table-bordered">
+                <tr>
+                  <th style="align:left">Declaring Type</th>
+                  <td>
+<a href="#router/doc-content/75726e3a6f72672e6e617364616e696b612e636f6e666967/Configuration.html">
+<img src="resources/images/EClass.gif" style="margin-right:5px"/>Configuration</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Type</th>
+                  <td>
+<a href="#router/doc-content/687474703a2f2f7777772e65636c697073652e6f72672f656d662f323030322f45636f7265/EString.html">
+<img src="resources/images/EDataType.gif" style="margin-right:5px"/>EString</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Cardinality</th>
+                  <td>*</td>
+                </tr>
+                <tr>
+                  <th style="align:left">Default value</th>
+                  <td>
+                    <div style="white-space:pre;font-family:monospace"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Changeable</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Derived</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">ID</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Ordered</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Transient</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unique</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unsettable</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Volatile</th>
+                  <td></td>
+                </tr>
+              </table></div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div role="tab" id="nsd_2h_collapse_heading" class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#nsd_2c_accordion" href="#nsd_2h_collapse_collapse" aria-expanded="false" aria-controls="nsd_2h_collapse_collapse"><b>description</b> : EString (Configuration)  - <I>Optional description.</I></a>
+            </h4>
+          </div>
+          <div id="nsd_2h_collapse_collapse" class="panel-collapse collapse">
+            <div id="nsd_2h_collapse_panel_body" class="panel-body"><p>Optional description.</p>
+              <table class="table table-bordered">
+                <tr>
+                  <th style="align:left">Declaring Type</th>
+                  <td>
+<a href="#router/doc-content/75726e3a6f72672e6e617364616e696b612e636f6e666967/Configuration.html">
+<img src="resources/images/EClass.gif" style="margin-right:5px"/>Configuration</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Type</th>
+                  <td>
+<a href="#router/doc-content/687474703a2f2f7777772e65636c697073652e6f72672f656d662f323030322f45636f7265/EString.html">
+<img src="resources/images/EDataType.gif" style="margin-right:5px"/>EString</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Cardinality</th>
+                  <td>0..1</td>
+                </tr>
+                <tr>
+                  <th style="align:left">Default value</th>
+                  <td>
+                    <div style="white-space:pre;font-family:monospace"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Changeable</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Derived</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">ID</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Ordered</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Transient</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unique</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unsettable</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Volatile</th>
+                  <td></td>
+                </tr>
+              </table></div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div role="tab" id="nsd_2i_collapse_heading" class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#nsd_2c_accordion" href="#nsd_2i_collapse_collapse" aria-expanded="false" aria-controls="nsd_2i_collapse_collapse"><b>includes</b> : EString (Configuration)  - <I>URL’s of configuration files to load into the this configurable’s context. </I></a>
+            </h4>
+          </div>
+          <div id="nsd_2i_collapse_collapse" class="panel-collapse collapse">
+            <div id="nsd_2i_collapse_panel_body" class="panel-body"><p>URL&rsquo;s of configuration files to load into the this configurable&rsquo;s context. URL&rsquo;s are resolved relative to the <code>baseURL</code>, which in turn is resolved relative to the model resource. </p>
+<p>The following custom schemes supported:</p>
+<ul>
+  <li><code>bundle</code> - <code>bundle:&lt;bundle symbolic name&gt;/&lt;resource path in the bundle&gt;</code></li>
+  <li><code>java</code> - <code>java:&lt;classloader path&gt;</code></li>
+</ul>
+<p>Configuration files can be in the following formats:</p>
+<ul>
+  <li>XMI model - <code>.xml</code> or <code>.nsdgen</code> extension.</li>
+  <li>Properties file - <code>.properties</code> extension.</li>
+  <li>JSON file following the structure of the configuration model - <code>.json</code> extension.</li>
+  <li>YAML file following the structure of the configuration model - <code>.yml</code> extension.</li>
+</ul>
+<p>If XML/JSON/YAML contains configuration definition, then its <code>createContext()</code> method is invoked in sequence to create a chain of contexts. If property or service is contained in the definition, it gets mounted to a context created by this configuration.</p>
+              <table class="table table-bordered">
+                <tr>
+                  <th style="align:left">Declaring Type</th>
+                  <td>
+<a href="#router/doc-content/75726e3a6f72672e6e617364616e696b612e636f6e666967/Configuration.html">
+<img src="resources/images/EClass.gif" style="margin-right:5px"/>Configuration</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Type</th>
+                  <td>
+<a href="#router/doc-content/687474703a2f2f7777772e65636c697073652e6f72672f656d662f323030322f45636f7265/EString.html">
+<img src="resources/images/EDataType.gif" style="margin-right:5px"/>EString</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Cardinality</th>
+                  <td>*</td>
+                </tr>
+                <tr>
+                  <th style="align:left">Default value</th>
+                  <td>
+                    <div style="white-space:pre;font-family:monospace"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Changeable</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Derived</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">ID</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Ordered</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Transient</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unique</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unsettable</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Volatile</th>
+                  <td></td>
+                </tr>
+              </table></div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div role="tab" id="nsd_2j_collapse_heading" class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#nsd_2c_accordion" href="#nsd_2j_collapse_collapse" aria-expanded="false" aria-controls="nsd_2j_collapse_collapse"><b>scripted</b> : EBoolean - <I>If true, value is treated as script and evaluated to compute actual value.</I></a>
+            </h4>
+          </div>
+          <div id="nsd_2j_collapse_collapse" class="panel-collapse collapse">
+            <div id="nsd_2j_collapse_panel_body" class="panel-body"><p>If true, value is treated as script and evaluated to compute actual value. </p>
+              <table class="table table-bordered">
+                <tr>
+                  <th style="align:left">Type</th>
+                  <td>
+<a href="#router/doc-content/687474703a2f2f7777772e65636c697073652e6f72672f656d662f323030322f45636f7265/EBoolean.html">
+<img src="resources/images/EDataType.gif" style="margin-right:5px"/>EBoolean</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Cardinality</th>
+                  <td>0..1</td>
+                </tr>
+                <tr>
+                  <th style="align:left">Default value</th>
+                  <td>
+                    <div style="white-space:pre;font-family:monospace"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Changeable</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Derived</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">ID</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Ordered</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Transient</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unique</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unsettable</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Volatile</th>
+                  <td></td>
+                </tr>
+              </table></div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div role="tab" id="nsd_2k_collapse_heading" class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#nsd_2c_accordion" href="#nsd_2k_collapse_collapse" aria-expanded="false" aria-controls="nsd_2k_collapse_collapse"><b>valueType</b> : EString - <I>Configuration item value type. </I></a>
+            </h4>
+          </div>
+          <div id="nsd_2k_collapse_collapse" class="panel-collapse collapse">
+            <div id="nsd_2k_collapse_panel_body" class="panel-body"><p>Configuration item value type. Defaults to <code>java.lang.String</code>.</p>
+              <table class="table table-bordered">
+                <tr>
+                  <th style="align:left">Type</th>
+                  <td>
+<a href="#router/doc-content/687474703a2f2f7777772e65636c697073652e6f72672f656d662f323030322f45636f7265/EString.html">
+<img src="resources/images/EDataType.gif" style="margin-right:5px"/>EString</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Cardinality</th>
+                  <td>0..1</td>
+                </tr>
+                <tr>
+                  <th style="align:left">Default value</th>
+                  <td>
+                    <div style="white-space:pre;font-family:monospace"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Changeable</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Derived</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">ID</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Ordered</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Transient</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unique</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unsettable</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Volatile</th>
+                  <td></td>
+                </tr>
+              </table>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Annotation org.nasdanika.ui.java-class</h3>
+  </div>
+  <table class="table table-bordered"></table></div></div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div role="tab" id="nsd_2l_collapse_heading" class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#nsd_2c_accordion" href="#nsd_2l_collapse_collapse" aria-expanded="false" aria-controls="nsd_2l_collapse_collapse"><b>values</b> : EString - <I>Configuration item values.</I></a>
+            </h4>
+          </div>
+          <div id="nsd_2l_collapse_collapse" class="panel-collapse collapse">
+            <div id="nsd_2l_collapse_panel_body" class="panel-body"><p>Configuration item values. </p>
+              <table class="table table-bordered">
+                <tr>
+                  <th style="align:left">Type</th>
+                  <td>
+<a href="#router/doc-content/687474703a2f2f7777772e65636c697073652e6f72672f656d662f323030322f45636f7265/EString.html">
+<img src="resources/images/EDataType.gif" style="margin-right:5px"/>EString</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Cardinality</th>
+                  <td>*</td>
+                </tr>
+                <tr>
+                  <th style="align:left">Default value</th>
+                  <td>
+                    <div style="white-space:pre;font-family:monospace"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Changeable</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Derived</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">ID</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Ordered</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Transient</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unique</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unsettable</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Volatile</th>
+                  <td></td>
+                </tr>
+              </table></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="nsd_2b_tab_3" class="tab-pane">
+      <div id="nsd_2m_accordion" role="tablist" class="panel-group">
+        <div class="panel panel-default">
+          <div role="tab" id="nsd_2n_collapse_heading" class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#nsd_2m_accordion" href="#nsd_2n_collapse_collapse" aria-expanded="false" aria-controls="nsd_2n_collapse_collapse"><b>configuration</b> : ConfigurationItem (Configuration)  - <I>Configuration items - properties and services.</I></a>
+            </h4>
+          </div>
+          <div id="nsd_2n_collapse_collapse" class="panel-collapse collapse">
+            <div id="nsd_2n_collapse_panel_body" class="panel-body"><p>Configuration items - properties and services.</p>
+              <table class="table table-bordered">
+                <tr>
+                  <th style="align:left">Declaring Type</th>
+                  <td>
+<a href="#router/doc-content/75726e3a6f72672e6e617364616e696b612e636f6e666967/Configuration.html">
+<img src="resources/images/EClass.gif" style="margin-right:5px"/>Configuration</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Type</th>
+                  <td>
+<a href="#router/doc-content/75726e3a6f72672e6e617364616e696b612e636f6e666967/ConfigurationItem.html">
+<img src="resources/images/EClass.gif" style="margin-right:5px"/>ConfigurationItem</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Cardinality</th>
+                  <td>*</td>
+                </tr>
+                <tr>
+                  <th style="align:left">Default value</th>
+                  <td>
+                    <div style="white-space:pre;font-family:monospace"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Changeable</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Container</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Containment</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Derived</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">EKeys</th>
+                  <td>
+                    <ol></ol>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Opposite</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Ordered</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Resolve proxies</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Transient</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unique</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unsettable</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Volatile</th>
+                  <td></td>
+                </tr>
+              </table></div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div role="tab" id="nsd_2o_collapse_heading" class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#nsd_2m_accordion" href="#nsd_2o_collapse_collapse" aria-expanded="false" aria-controls="nsd_2o_collapse_collapse"><b>include</b> : Configuration (Configuration)  - <I>Configurations defined elsewhere to be included into this configuration. </I></a>
+            </h4>
+          </div>
+          <div id="nsd_2o_collapse_collapse" class="panel-collapse collapse">
+            <div id="nsd_2o_collapse_panel_body" class="panel-body"><p>Configurations defined elsewhere to be included into this configuration. Configurations get chained and configuration items (properties and services) get mounted to the context created by this configuration.</p>
+              <table class="table table-bordered">
+                <tr>
+                  <th style="align:left">Declaring Type</th>
+                  <td>
+<a href="#router/doc-content/75726e3a6f72672e6e617364616e696b612e636f6e666967/Configuration.html">
+<img src="resources/images/EClass.gif" style="margin-right:5px"/>Configuration</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Type</th>
+                  <td>
+<a href="#router/doc-content/75726e3a6f72672e6e617364616e696b612e636f6e666967/Configuration.html">
+<img src="resources/images/EClass.gif" style="margin-right:5px"/>Configuration</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Cardinality</th>
+                  <td>*</td>
+                </tr>
+                <tr>
+                  <th style="align:left">Default value</th>
+                  <td>
+                    <div style="white-space:pre;font-family:monospace"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Changeable</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Container</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Containment</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Derived</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">EKeys</th>
+                  <td>
+                    <ol></ol>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Opposite</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Ordered</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Resolve proxies</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Transient</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unique</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unsettable</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Volatile</th>
+                  <td></td>
+                </tr>
+              </table></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="nsd_2b_tab_4" class="tab-pane">
+      <div id="nsd_2p_accordion" role="tablist" class="panel-group">
+        <div class="panel panel-default">
+          <div role="tab" id="nsd_2q_collapse_heading" class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#nsd_2p_accordion" href="#nsd_2q_collapse_collapse" aria-expanded="false" aria-controls="nsd_2q_collapse_collapse"><b>createContext</b> : Context (Configuration)  - <I>Creates org.nasdanika.config.Context which provides access to properties and services.</I></a>
+            </h4>
+          </div>
+          <div id="nsd_2q_collapse_collapse" class="panel-collapse collapse">
+            <div id="nsd_2q_collapse_panel_body" class="panel-body"><p>Creates <code>org.nasdanika.config.Context</code> which provides access to properties and services.</p>
+              <table class="table table-bordered">
+                <tr>
+                  <th style="align:left">Declaring Type</th>
+                  <td>
+<a href="#router/doc-content/75726e3a6f72672e6e617364616e696b612e636f6e666967/Configuration.html">
+<img src="resources/images/EClass.gif" style="margin-right:5px"/>Configuration</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Type</th>
+                  <td>
+<a href="#router/doc-content/75726e3a6f72672e6e617364616e696b612e636f6e666967/Context.html">
+<img src="resources/images/EDataType.gif" style="margin-right:5px"/>Context</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Cardinality</th>
+                  <td>0..1</td>
+                </tr>
+                <tr>
+                  <th style="align:left">Exceptions</th>
+                  <td>
+<a href="#router/doc-content/75726e3a6f72672e6e617364616e696b612e636f6e666967/Exception.html">
+<img src="resources/images/EDataType.gif" style="margin-right:5px"/>Exception</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unique</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+              </table>
+              <h3>Parameters</h3>
+              <h4>parent : 
+<a href="#router/doc-content/75726e3a6f72672e6e617364616e696b612e636f6e666967/Context.html">
+<img src="resources/images/EDataType.gif" style="margin-right:5px"/>Context</a> 0..1</h4>
+              <div style="margin-top:10px;margin-bottom:20px" class="markdown-body"><p>Parent context.</p></div>
+              <h4>monitor : 
+<a href="#router/doc-content/75726e3a6f72672e6e617364616e696b612e636f6e666967/SubMonitor.html">
+<img src="resources/images/EDataType.gif" style="margin-right:5px"/>SubMonitor</a> 0..1</h4></div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div role="tab" id="nsd_2r_collapse_heading" class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#nsd_2p_accordion" href="#nsd_2r_collapse_collapse" aria-expanded="false" aria-controls="nsd_2r_collapse_collapse"><b>getConfigWorkSize</b> : EInt (Configuration) </a>
+            </h4>
+          </div>
+          <div id="nsd_2r_collapse_collapse" class="panel-collapse collapse">
+            <div id="nsd_2r_collapse_panel_body" class="panel-body">
+              <table class="table table-bordered">
+                <tr>
+                  <th style="align:left">Declaring Type</th>
+                  <td>
+<a href="#router/doc-content/75726e3a6f72672e6e617364616e696b612e636f6e666967/Configuration.html">
+<img src="resources/images/EClass.gif" style="margin-right:5px"/>Configuration</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Type</th>
+                  <td>
+<a href="#router/doc-content/687474703a2f2f7777772e65636c697073652e6f72672f656d662f323030322f45636f7265/EInt.html">
+<img src="resources/images/EDataType.gif" style="margin-right:5px"/>EInt</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Cardinality</th>
+                  <td>0..1</td>
+                </tr>
+                <tr>
+                  <th style="align:left">Exceptions</th>
+                  <td>
+                    <ul></ul>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unique</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div role="tab" id="nsd_2s_collapse_heading" class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#nsd_2p_accordion" href="#nsd_2s_collapse_collapse" aria-expanded="false" aria-controls="nsd_2s_collapse_collapse"><b>validate</b> : EBoolean (Configuration)  - <I>Validates element.</I></a>
+            </h4>
+          </div>
+          <div id="nsd_2s_collapse_collapse" class="panel-collapse collapse">
+            <div id="nsd_2s_collapse_panel_body" class="panel-body"><p>Validates element.</p>
+              <table class="table table-bordered">
+                <tr>
+                  <th style="align:left">Declaring Type</th>
+                  <td>
+<a href="#router/doc-content/75726e3a6f72672e6e617364616e696b612e636f6e666967/Configuration.html">
+<img src="resources/images/EClass.gif" style="margin-right:5px"/>Configuration</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Type</th>
+                  <td>
+<a href="#router/doc-content/687474703a2f2f7777772e65636c697073652e6f72672f656d662f323030322f45636f7265/EBoolean.html">
+<img src="resources/images/EDataType.gif" style="margin-right:5px"/>EBoolean</a></td>
+                </tr>
+                <tr>
+                  <th style="align:left">Cardinality</th>
+                  <td>0..1</td>
+                </tr>
+                <tr>
+                  <th style="align:left">Exceptions</th>
+                  <td>
+                    <ul></ul>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="align:left">Unique</th>
+                  <td>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </td>
+                </tr>
+              </table>
+              <h3>Parameters</h3>
+              <h4>diagnostics : 
+<a href="#router/doc-content/687474703a2f2f7777772e65636c697073652e6f72672f656d662f323030322f45636f7265/EDiagnosticChain.html">
+<img src="resources/images/EDataType.gif" style="margin-right:5px"/>EDiagnosticChain</a> 0..1</h4>
+              <div style="margin-top:10px;margin-bottom:20px" class="markdown-body"><p>Diagnostics to add validation messages to.</p></div>
+              <h4>context : 
+<a href="#router/doc-content/687474703a2f2f7777772e65636c697073652e6f72672f656d662f323030322f45636f7265/EMap.html">
+<img src="resources/images/EDataType.gif" style="margin-right:5px"/>EMap</a> 0..1</h4>
+              <div style="margin-top:10px;margin-bottom:20px" class="markdown-body"><p>Validation context.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="nsd_2b_tab_5" class="tab-pane">
+      <table class="table table-bordered">
+        <tr class="info">
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>
+<a href="#router/doc-content/75726e3a6f72672e6e617364616e696b612e636f6e666967/ConfigurationItem.html">ConfigurationItem</a></td>
+          <td>Configuration item contributes to the context of Configurable and can itself be configurable.</td>
+        </tr>
+      </table>
+    </div>
+    <div id="nsd_2b_tab_6" class="tab-pane">
+      <table class="table table-bordered">
+        <tr class="info">
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>
+<a href="#router/doc-content/75726e3a6f72672e6e617364616e696b612e636f6e666967/Service.html">Service</a></td>
+          <td>Service is a configuration item keyed by its type or one of types it implements/extends.</td>
+        </tr>
+        <tr>
+          <td>
+<a href="#router/doc-content/75726e3a6f72672e6e617364616e696b612e636f6e666967/Property.html">Property</a></td>
+          <td>Property is a valued configuration item keyed by a String.</td>
+        </tr>
+      </table>
+    </div></div>
+</div>
