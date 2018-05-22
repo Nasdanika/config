@@ -14,7 +14,7 @@
 	</prerequisites>
 
 	<properties>
-		<tycho-version>1.0.0</tycho-version>
+		<tycho-version>1.1.0</tycho-version>
 	</properties>
 
 	<repositories>
@@ -77,6 +77,15 @@
 		</pluginManagement>
 		-->
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-site-plugin</artifactId>
+			    <version>3.7.1</version>
+			    <configuration>
+			        <skip>true</skip>
+			        <skipDeploy>true</skipDeploy>
+			    </configuration>
+			</plugin>		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -162,14 +171,14 @@
 		<module>../org.nasdanika.config.repository</module>
 
 	</modules>
-	<name>Nasdanika Code Generation</name>
+	<name>Nasdanika Config</name>
 	<!-- For resolution of JavaDoc between modules -->
-	<url>http://www.nasdanika.org/codegen/apidocs/</url>
+	<url>http://www.nasdanika.org/config/apidocs/</url>
 	<organization>
 		<name>Nasdanika LLC</name>
 		<url>http://www.nasdanika.org</url>
 	</organization>
 	<scm>
-		<url>https://github.com/Nasdanika/codegen</url>
+		<url>https://github.com/Nasdanika/config</url>
 	</scm>
 </project>
