@@ -37,5 +37,15 @@
     <artifactId>maven-fluido-skin</artifactId>
     <version>1.7</version>
   </skin>
+  
+  <custom>
+    <fluidoSkin>
+      <gitHub>
+        <projectId>nasdanika/config</projectId>
+        <ribbonOrientation>right</ribbonOrientation>
+        <ribbonColor>gray</ribbonColor>
+      </gitHub>
+    </fluidoSkin>
+  </custom>
  
 </project>
