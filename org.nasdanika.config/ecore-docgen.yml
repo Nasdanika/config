@@ -1,0 +1,5 @@
+models:
+  - model/config.genmodel
+  
+output:
+  site: /org.nasdanika.config/modeldoc/site   

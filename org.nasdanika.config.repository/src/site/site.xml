@@ -12,9 +12,20 @@
  
    <menu name="Main">
       <item name="Overview" href="index.html" />
-      <item name="Model Documentation" href="modeldocs/index.html" />
-      <item name="API Documentation" href="apidocs/index.html" />
+      <item name="Model Documentation" href="modeldoc/index.html" />
       <item name="Project information" href="project-info.html" />      
+   </menu>
+
+   <menu name="Java API">
+      <item name="Model" href="apidocs/model/index.html" />
+      <item name="Edit" href="apidocs/edit/index.html" />
+      <item name="Editor" href="apidocs/editor/index.html" />
+   </menu>
+
+   <menu name="Issues">
+      <item name="Roadmap" href="https://nasdanika.org/mantis/roadmap_page.php?project_id=7" />
+      <item name="All" href="https://nasdanika.org/mantis/view_all_bug_page.php?project_id=7" />
+      <item name="Change log" href="https://nasdanika.org/mantis/changelog_page.php?project_id=7" />
    </menu>
  
    <footer><![CDATA[All rights reserved.]]></footer>

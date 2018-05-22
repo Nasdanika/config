@@ -43,6 +43,22 @@
 						</configuration>
 					</execution>
 					<execution>
+						<id>copy-modeldoc</id>
+						<phase>pre-site</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/site/modeldoc</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/../org.nasdanika.config/modeldoc/site</directory>
+									<filtering>false</filtering>
+								</resource>								
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
 						<id>copy-model-javadoc</id>
 						<phase>pre-site</phase>
 						<goals>
@@ -52,12 +68,45 @@
 							<outputDirectory>${basedir}/target/site/apidocs/model</outputDirectory>
 							<resources>
 								<resource>
-									<directory>${basedir}/../org.nasdanika.config/target/apidocs</directory>
+									<directory>${basedir}/../org.nasdanika.config/target/site/apidocs</directory>
 									<filtering>false</filtering>
 								</resource>								
 							</resources>
 						</configuration>
 					</execution>
+					<execution>
+						<id>copy-edit-javadoc</id>
+						<phase>pre-site</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/site/apidocs/edit</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/../org.nasdanika.config.edit/target/site/apidocs</directory>
+									<filtering>false</filtering>
+								</resource>								
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-editor-javadoc</id>
+						<phase>pre-site</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/site/apidocs/editor</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/../org.nasdanika.config.editor/target/site/apidocs</directory>
+									<filtering>false</filtering>
+								</resource>								
+							</resources>
+						</configuration>
+					</execution>
+					
 				</executions>
 			</plugin>
 			<plugin>
