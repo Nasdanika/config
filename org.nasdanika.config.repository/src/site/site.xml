@@ -6,7 +6,7 @@
   <body>
  
     <breadcrumbs>
-      <item name="Nasdanika" href="http://www.nasdanika.org"/>
+      <item name="Nasdanika" href="../site/index.html"/>
       <item name="Config" href="index.html"/>
     </breadcrumbs>
  
