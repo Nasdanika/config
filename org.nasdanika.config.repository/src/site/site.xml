@@ -23,9 +23,9 @@
    </menu>
 
    <menu name="Issues">
-      <item name="Roadmap" href="https://nasdanika.org/mantis/roadmap_page.php?project_id=7" />
-      <item name="All" href="https://nasdanika.org/mantis/view_all_bug_page.php?project_id=7" />
-      <item name="Change log" href="https://nasdanika.org/mantis/changelog_page.php?project_id=7" />
+      <item name="Roadmap" href="../../mantis/roadmap_page.php?project_id=7" />
+      <item name="All" href="../../mantis/view_all_bug_page.php?project_id=7" />
+      <item name="Change log" href="../../mantis/changelog_page.php?project_id=7" />
    </menu>
  
    <footer><![CDATA[All rights reserved.]]></footer>
