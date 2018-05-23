@@ -7,5 +7,6 @@ output:
 apidocs:
   - https://www.nasdanika.org/products/config/apidocs/model/
   - http://download.eclipse.org/modeling/emf/emf/javadoc/2.11/
+  - https://docs.oracle.com/javase/8/docs/api/
   
   
