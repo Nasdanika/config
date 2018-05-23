@@ -45,6 +45,9 @@
         <ribbonOrientation>right</ribbonOrientation>
         <ribbonColor>gray</ribbonColor>
       </gitHub>
+      <googleSearch>
+        <sitesearch>https://www.nasdanika.org/products/config</sitesearch>
+      </googleSearch>      
     </fluidoSkin>
   </custom>
  
