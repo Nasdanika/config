@@ -25,7 +25,7 @@
    <menu name="Issues">
       <item name="Roadmap" href="../../mantis/roadmap_page.php?project_id=7" />
       <item name="All" href="../../mantis/view_all_bug_page.php?project_id=7" />
-      <item name="Change log" href="../../mantis/changelog_page.php?project_id=7" />
+      <item name="Change Log" href="../../mantis/changelog_page.php?project_id=7" />
    </menu>
  
    <footer><![CDATA[All rights reserved.]]></footer>

@@ -3,3 +3,9 @@ models:
   
 output:
   site: /org.nasdanika.config/modeldoc/site   
+
+apidocs:
+  - https://www.nasdanika.org/products/config/apidocs/model/
+  - http://download.eclipse.org/modeling/emf/emf/javadoc/2.11/
+  
+  
