@@ -15,7 +15,7 @@ application logic.
 
 ## Creating a model
 
-* Install Configuration editor from ``http://www.nasdanika.org/products/config/repository``.
+* Install Configuration editor from ``https://www.nasdanika.org/products/config/repository``.
 * File > New > Other > Nasdanika/Configuration Model.
 * Select Configuration as the root model element.
 * Add and configure properties, services, and configuration categories.
@@ -106,8 +106,8 @@ See [Model API Documentation](apidocs/model) for more details.
 
 ## P2 Repository
 
- * ``http://www.nasdanika.org/products/config/repository``
- * [Archived](http://www.nasdanika.org/products/config/org.nasdanika.config.repository-0.1.0-SNAPSHOT.zip)
+ * ``https://www.nasdanika.org/products/config/repository``
+ * [Archived](https://www.nasdanika.org/products/config/org.nasdanika.config.repository-0.1.0-SNAPSHOT.zip)
  
 ## How to contribute
 
