@@ -1,12 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="Running Platform" sequenceNumber="5">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><?pde version="3.8"?><target name="Running Platform" sequenceNumber="5">
 <locations>
 <location path="${eclipse_home}" type="Profile"/>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.codehaus.janino.commons-compiler" version="3.0.6"/>
-<unit id="org.codehaus.janino" version="3.0.6"/>
-<repository location="http://www.nasdanika.org/maven-osgi"/>
-</location>
+	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+		<unit id="org.codehaus.janino.commons-compiler" version="2.7.8"/>
+		<unit id="org.cohehaus.janino" version="2.7.8"/>
+		<repository location="https://www.nasdanika.org/products/maven-osgi/repository"/>
+		<unit id="com.github.spullara.mustache.java.compiler" version="0.9.5"/>
+		<unit id="org.freemarker.freemarker" version="2.3.28.stable"/>
+		<unit id="org.apache.commons.lang3" version="3.7.0"/>
+	</location>
+	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+		<unit id="org.nasdanika.third-party.feature.feature.group" version="0.1.0.201707110427"/>
+		<repository location="https://www.nasdanika.org/third-party/org.nasdanika.third-party.repository/target/repository"/>
+	</location>
 </locations>
 <environment>
 <os>win32</os>
