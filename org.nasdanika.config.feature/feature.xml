@@ -9,7 +9,6 @@
       Models and editors for code generation.
    </description>
 
-
    <copyright>
       (c) 2016-2017 Nasdanika LLC, All rights reserved.
    </copyright>
@@ -118,13 +117,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
          unpack="false"/>
 
    <plugin
-         id="org.codehaus.janino"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.codehaus.janino.commons-compiler"
          download-size="0"
          install-size="0"
@@ -133,6 +125,13 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <plugin
          id="org.nasdanika.config.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.cohehaus.janino"
          download-size="0"
          install-size="0"
          version="0.0.0"
