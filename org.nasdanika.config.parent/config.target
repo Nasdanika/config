@@ -8,6 +8,8 @@
 		<unit id="com.github.spullara.mustache.java.compiler" version="0.9.5"/>
 		<unit id="org.freemarker.freemarker" version="2.3.28.stable"/>
 		<unit id="org.apache.commons.lang3" version="3.7.0"/>
+		<unit id="json" version="20180130.0.0"/>
+		<unit id="org.yaml.snakeyaml" version="1.21.0"/>
 	</location>
 	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 		<unit id="org.nasdanika.third-party.feature.feature.group" version="0.1.0.201707110427"/>
