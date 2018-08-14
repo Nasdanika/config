@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 import org.nasdanika.config.ConfigPackage;
 import org.nasdanika.config.Configuration;
@@ -209,9 +210,10 @@ public class ConfigurationImpl extends CDOObjectImpl implements Configuration {
 		// Base URL
 		Object pbup = parent.get(BASE_URL_PROPERTY);
 		URL parentBaseURL = pbup instanceof URL ? (URL) pbup : null;
-		if (parentBaseURL == null) {
+		Resource eResource = eResource();
+		if (parentBaseURL == null && eResource != null) {
 			try {
-				parentBaseURL = new URL(eResource().getURI().toString());
+				parentBaseURL = new URL(eResource.getURI().toString());
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
 			}
